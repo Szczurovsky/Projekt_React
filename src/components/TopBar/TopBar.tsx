@@ -1,21 +1,19 @@
-import React, {FC} from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-import zdjecie from "../../icons/house.png"
-import logo from "../../icons/logo.png"
-import search from "../../icons/search.png"
+import zdjecie from "../../icons/house.png";
+import logo from "../../icons/logo.png";
+import search from "../../icons/search.png";
 import "./TopBar.css";
+import useDropdown from "react-dropdown-hook";
+import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
 const InnerWrapper = styled.div`
-width:100vw;
-height:8vh;
-display:flex;
-flex-direction:row;
-background-color: gray;
-align-items: center;
-
-;`
-
-
-
+    width: 100vw;
+    height: 8vh;
+    display: flex;
+    flex-direction: row;
+    background-color: gray;
+    align-items: center;
+`;
 
 // const RightIcons = styled.div`
 // width:100px;
@@ -23,28 +21,46 @@ align-items: center;
 // `;
 
 const Icon = styled.div`
-background-color:red;
-display:flex;
-width:40px;
-align-items: center;
-justify-content: center;
-margin:0 10px 0 40px;
-height:40px;
-border-radius:90%;
+    background-color: red;
+    display: flex;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px 0 40px;
+    height: 40px;
+    border-radius: 90%;
 `;
-export const TopBar: FC =() =>{
-    return(
+export const TopBar: FC = () => {
+    const [
+        wrapperRef,
+        dropdownOpen,
+        toggleDropdown,
+        closeDropdown,
+    ] = useDropdown();
+    return (
         <InnerWrapper>
-                <img src={logo} alt="" className="logo"/> 
+            <img src={logo} alt="" className="logo" />
+            <div>
+                <div ref={wrapperRef}>
+                    <button onClick={toggleDropdown}>
+                        <p>Home</p>
+                    </button>
+                    {dropdownOpen && <DropdownMenu />}
+                </div>
+                <button onClick={closeDropdown}>
+                    Close menu after this click
+                </button>
+            </div>
             <Icon>
-                <img src={zdjecie} alt="test" className="button"/>
+                <img src={zdjecie} alt="test" className="button" />
             </Icon>
             <p>Home</p>
             <div className="wrapper">
-             <input className="input-field" type="text"/> 
-             <a href="s"><img src={search} alt="" className="search"/></a>
+                <input className="input-field" type="text" />
+                <a href="s">
+                    <img src={search} alt="" className="search" />
+                </a>
             </div>
-            
         </InnerWrapper>
-    )
-}
+    );
+};
