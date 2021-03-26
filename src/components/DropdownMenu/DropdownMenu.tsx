@@ -3,10 +3,12 @@ import styled from "styled-components";
 import useDropdown from "react-dropdown-hook";
 
 const InnerWrapper = styled.div`
-    width: 30vw;
+    position: absolute;
+    top: 19vh;
+    width: 15vw;
     height: 30vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     background-color: red;
     align-items: center;
     position: relative;
@@ -15,8 +17,13 @@ const InnerWrapper = styled.div`
 
 const Filter = styled.input`
     width: 80%;
+    margin: 5% 10%;
 `;
 
+const Category = styled.div`
+    font-size: 0.8rem;
+    color: gray;
+`;
 export const DropdownMenu: FC = () => {
     return (
         <InnerWrapper>

@@ -30,6 +30,22 @@ const Icon = styled.div`
     height: 40px;
     border-radius: 90%;
 `;
+
+const WrapMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const MenuDrop = styled.button`
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+`;
+
+const MenuUp = styled.button`
+    display: none;
+`;
+
 export const TopBar: FC = () => {
     const [
         wrapperRef,
@@ -40,21 +56,19 @@ export const TopBar: FC = () => {
     return (
         <InnerWrapper>
             <img src={logo} alt="" className="logo" />
-            <div>
-                <div ref={wrapperRef}>
-                    <button onClick={toggleDropdown}>
-                        <p>Home</p>
-                    </button>
-                    {dropdownOpen && <DropdownMenu />}
-                </div>
-                <button onClick={closeDropdown}>
-                    Close menu after this click
-                </button>
-            </div>
+
             <Icon>
                 <img src={zdjecie} alt="test" className="button" />
             </Icon>
-            <p>Home</p>
+            <WrapMenu>
+                <div ref={wrapperRef}>
+                    <MenuDrop onClick={toggleDropdown}>Home</MenuDrop>
+                    {dropdownOpen && <DropdownMenu />}
+                </div>
+                <MenuUp onClick={closeDropdown}>
+                    Close menu after this click
+                </MenuUp>
+            </WrapMenu>
             <div className="wrapper">
                 <input className="input-field" type="text" />
                 <a href="s">
