@@ -1,8 +1,12 @@
 import React, { FC } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import profilowe from "../../icons/profilowe.jpg";
 import "./LeftMenu.css";
-
+import { IState } from "../../reducers";
+import { IUsersReducer } from "../../reducers/usersReducer";
+import { IPhotosReducer } from "../../reducers/photosReducer";
+import { isTaggedTemplateExpression } from "typescript";
 const WrapMenu = styled.div`
     display: flex;
     background-color: #fff;
@@ -39,18 +43,33 @@ const FastMenu = styled.div`
     align-items: center;
 `;
 const ShortcutWrap = styled.div``;
+// export const Zdjęcie: FC = () => {
+//     const { photosList } = useSelector<IState, IPhotoReducer>((globalState) => ({
+//         ...globalState.photos,
+//     }))};
 export const Profil: FC = () => {
+    const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
+        ...globalState.users,
+    }));
+    const { photosList } = useSelector<IState, IPhotosReducer>(
+        (globalState) => ({
+            ...globalState.photos,
+        })
+    );
+
     return (
         <React.Fragment>
             <WrapMenu>
                 <WrapImage>
                     <Image>
                         <img
-                            src={profilowe}
+                            src={photosList?.[1]?.url}
                             alt="profilowe"
                             className="profilowe"
                         />
-                        <Name>Humberta Swift</Name>
+                        {console.log(photosList)}
+                        {/* {console.log({ usersList[1].name })} */}
+                        <Name>{usersList?.[1]?.name}</Name>
                         <JobTitle>Job title - Company</JobTitle>
                     </Image>
                 </WrapImage>

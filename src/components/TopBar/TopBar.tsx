@@ -6,12 +6,18 @@ import search from "../../icons/search.png";
 import "./TopBar.css";
 import useDropdown from "react-dropdown-hook";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
+import { AiOutlineArrowDown } from "react-icons/ai";
+
 const InnerWrapper = styled.div`
-    width: 100vw;
-    height: 8vh;
+    width: 100%;
+    height: 60px;
     display: flex;
     flex-direction: row;
-    background-color: gray;
+    background-color: #f5f5f5;
+    box-shadow: 0px 4px 14px -2px rgba(0, 0, 0, 0.75);
+    /* box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+     */
+    border-bottom: 1px solid black;
     align-items: center;
 `;
 
@@ -21,7 +27,7 @@ const InnerWrapper = styled.div`
 // `;
 
 const Icon = styled.div`
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     width: 40px;
     align-items: center;
@@ -32,6 +38,7 @@ const Icon = styled.div`
 `;
 
 const WrapMenu = styled.div`
+    /* position: relative; */
     display: flex;
     flex-direction: column;
 `;
@@ -40,10 +47,6 @@ const MenuDrop = styled.button`
     background-color: transparent;
     cursor: pointer;
     border: none;
-`;
-
-const MenuUp = styled.button`
-    display: none;
 `;
 
 export const TopBar: FC = () => {
@@ -56,22 +59,21 @@ export const TopBar: FC = () => {
     return (
         <InnerWrapper>
             <img src={logo} alt="" className="logo" />
-
             <Icon>
                 <img src={zdjecie} alt="test" className="button" />
             </Icon>
+            Home
             <WrapMenu>
                 <div ref={wrapperRef}>
-                    <MenuDrop onClick={toggleDropdown}>Home</MenuDrop>
+                    <MenuDrop onClick={toggleDropdown}>
+                        <AiOutlineArrowDown />
+                    </MenuDrop>
                     {dropdownOpen && <DropdownMenu />}
                 </div>
-                <MenuUp onClick={closeDropdown}>
-                    Close menu after this click
-                </MenuUp>
             </WrapMenu>
             <div className="wrapper">
                 <input className="input-field" type="text" />
-                <a href="s">
+                <a href="test">
                     <img src={search} alt="" className="search" />
                 </a>
             </div>
