@@ -43,10 +43,7 @@ const FastMenu = styled.div`
     align-items: center;
 `;
 const ShortcutWrap = styled.div``;
-// export const Zdjęcie: FC = () => {
-//     const { photosList } = useSelector<IState, IPhotoReducer>((globalState) => ({
-//         ...globalState.photos,
-//     }))};
+
 export const Profil: FC = () => {
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
@@ -67,8 +64,6 @@ export const Profil: FC = () => {
                             alt="profilowe"
                             className="profilowe"
                         />
-                        {console.log(photosList)}
-                        {/* {console.log({ usersList[1].name })} */}
                         <Name>{usersList?.[1]?.name}</Name>
                         <JobTitle>Job title - Company</JobTitle>
                     </Image>

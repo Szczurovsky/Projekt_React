@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState, ChangeEvent } from "react";
 import styled from "styled-components";
 import * as AllTypes from "react-icons";
 import { IState } from "../../reducers";
@@ -89,42 +89,83 @@ export const DropdownMenu: FC = () => {
             ...globalState.photos,
         })
     );
+    const [inputText, setInputText] = useState<string>("");
+
+    const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        setInputText(text);
+    };
     return (
         <InnerWrapper>
-            <Filter placeholder="Filter..." />
+            <Filter
+                type="text"
+                value={inputText}
+                onChange={inputHandler}
+                placeholder="Wprowadź tekst"
+            />
 
             <WrapLinks>
                 <Subtitles>Platform</Subtitles>
 
                 <Linked>
                     <Links to="/">
-                        <AiFillHome /> Home
+                        {"Home"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <AiFillHome />
+                                Home
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/publications">
-                        <FaNewspaper /> Publications
+                        {"Publications"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <FaNewspaper /> Publications
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/people">
-                        <BsFillPeopleFill /> People
+                        {"People"
+                            .toLocaleLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <BsFillPeopleFill /> People)
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/entities">
-                        {" "}
-                        <GrOrganization /> Entities
+                        {"Entities"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <GrOrganization /> Entities
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/administration">
                         {" "}
-                        <GiKing /> Administration
+                        {"Administration"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <GiKing /> Administration
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
@@ -134,36 +175,61 @@ export const DropdownMenu: FC = () => {
 
                 <Linked>
                     <Links to="/clientContract">
-                        {" "}
-                        <FaFileContract /> Client contract
+                        {"Client contract"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <FaFileContract /> Client contract
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/supplierContract">
-                        {" "}
-                        <FaFileContract /> Supplier contract
+                        {"Supplier contract"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <FaFileContract /> Supplier contract
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/corporate">
-                        {" "}
-                        <CgOrganisation /> Corporate
+                        {"Corporate"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <CgOrganisation /> Corporate
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/groupNorms">
-                        {" "}
-                        <FaBook /> Group Norms
+                        {"Group Norms"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <FaBook /> Group Norms
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
                 <Linked>
                     <Links to="/realEstateContracts">
-                        {" "}
-                        <FaFileContract /> Real estate contracts
+                        {"Real Estates"
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <FaFileContract /> Real estate contracts
+                            </>
+                        )}
                     </Links>
                 </Linked>
 
@@ -173,8 +239,16 @@ export const DropdownMenu: FC = () => {
             <WrapProfile>
                 <Linked>
                     <Links to="/profile">
-                        <img src={photosList[1].url} alt="" />
-                        {usersList[1].name}
+                        {usersList?.[1]?.name
+                            .toLowerCase()
+                            .includes(inputText.toLowerCase()) && (
+                            <>
+                                <img src={photosList?.[1]?.url} alt="" />
+
+                                {usersList?.[1]?.name}
+                            </>
+                        )}
+                        {console.log(usersList)}
                     </Links>
                 </Linked>
             </WrapProfile>

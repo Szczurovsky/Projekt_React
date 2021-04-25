@@ -72,7 +72,11 @@ export const TopBar: FC = () => {
                 </div>
             </WrapMenu>
             <div className="wrapper">
-                <input className="input-field" type="text" />
+                <input
+                    className="input-field"
+                    type="text"
+                    placeholder="Search Legalcluster"
+                />
                 <a href="test">
                     <img src={search} alt="" className="search" />
                 </a>

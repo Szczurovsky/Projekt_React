@@ -25,6 +25,8 @@ img {
 .input-field {
     width: 40%;
     margin: 10px 0;
+    text-align: center;
+    height: 30px;
 }
 .search {
     margin-left: -60px;

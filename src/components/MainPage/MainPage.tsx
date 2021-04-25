@@ -1,12 +1,14 @@
 import React, { FC, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUsers } from "../../actions/userActions";
+import { getPosts } from "../../actions/postActions";
 import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
 import { LeftMenu } from "../LeftMenu/LeftMenu";
 import { TopBar } from "../TopBar/TopBar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Publications } from "../Publications/Publications";
+import { PublicationsShort } from "../Publications/PublicationsShort";
 import { People } from "../People/People";
 import { Entities } from "../Entities/Entities";
 import { Administration } from "../Administration/Administration";
@@ -18,6 +20,7 @@ import { RealEstateContracts } from "../RealEstateContracts/RealEstateContracts"
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
+type GetPosts = ReturnType<typeof getPosts>;
 const Wrapper = styled.div`
     background-color: #e6e6e6;
     display: flex;
@@ -74,6 +77,7 @@ export const MainPage: FC = () => {
     useEffect(() => {
         dispatch<GetUsers>(getUsers());
         dispatch<GetPhotos>(getPhotos());
+        dispatch<GetPosts>(getPosts());
     }, []);
     return (
         <Router>
@@ -112,7 +116,7 @@ export const MainPage: FC = () => {
                             </Route>
                             <Route path="/">
                                 <Subtitles>Publications</Subtitles>
-                                <PublicationsDiv></PublicationsDiv>
+                                <PublicationsShort />
                                 <Subtitles>Workspaces</Subtitles>
                                 <WorkspacesDiv></WorkspacesDiv>
                                 <Subtitles>Resume Your Work</Subtitles>
