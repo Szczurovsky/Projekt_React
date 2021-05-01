@@ -10,14 +10,15 @@ import wieżowiec from "../../icons/skyscraper.jpg";
 import styled from "styled-components";
 
 const MainWrapper = styled.div`
-    height: 40vh;
+    height: 45vh;
     display: flex;
-    /* background-color: black; */
+    background-color: white;
     align-items: center;
-    justify-content: space-around;
+    font-family: roboto;
+    /* justify-content: space-around; */
 `;
 const LeftSide = styled.div`
-    width: 30%;
+    width: 40%;
     height: 100%;
 `;
 const RightSide = styled.div`
@@ -46,6 +47,7 @@ const Text = styled.p`
     color: white;
     align-items: center;
     margin-left: 10px !important;
+    margin-right: 10px !important;
     margin-bottom: 10px;
     text-align: left;
 `;
@@ -58,26 +60,44 @@ const PhotoPost = styled.img`
     flex: 0 2 auto;
     align-self: stretch;
     margin: 0 10px;
+    height: 100px !important;
+    min-height: 100px;
 `;
 const Post = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
     align-content: stretch;
-    align-items: center;
+    /* align-items: center; */
 `;
 const TextPost = styled.div`
-    align-self: center;
+    align-self: flex-end;
     flex-direction: column;
+    /* letter-spacing: 2px; */
 `;
 const Title = styled.p`
     display: flex;
     /* color: white; */
     align-self: flex-start;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-left: 10px !important;
 `;
-const Author = styled.div``;
-const Content = styled.div``;
+const Author = styled.div`
+    display: flex;
+    align-self: flex-start;
+    border-top: 1px solid red;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    padding-top: 10px;
+`;
+const Content = styled.div`
+    word-wrap: wrap;
+    display: flex;
+    align-self: flex-end !important;
+    overflow: hidden;
+`;
 // const Time = styled.time`
 //     position: absolute;
 //     bottom: 0;
@@ -86,8 +106,23 @@ const Content = styled.div``;
 //     margin-bottom: 10px;
 //     text-align: left;
 // `;
+const Link = styled.a`
+    align-self: flex-start;
+    margin-left: 10px !important;
+    margin-bottom: 10px;
+`;
 
 export const PublicationsShort: FC = () => {
+    let array1 = [];
+    let array2 = [];
+    let array3 = [];
+    let array4 = [];
+    let array5 = [];
+    let array6 = [];
+    let array7 = [];
+    let array8 = [];
+    let array9 = [];
+    let array10 = [];
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
     }));
@@ -99,6 +134,94 @@ export const PublicationsShort: FC = () => {
     const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
         ...globalState.posts,
     }));
+    // postsList?.forEach((id) =>{
+
+    // })
+    // for (let item in postsList) {
+    //     // console.log(`${postsList[item].userId}`);
+    //     switch (item) {
+    //         case "1":
+    //             array1.push(postsList?.filter((numer) => numer.userId === 1));
+    //             break;
+    //         case "2":
+    //             array2.push(postsList?.filter((numer) => numer.userId === 2));
+    //             break;
+    //         case "3":
+    //             array3.push(postsList?.filter((numer) => numer.userId === 3));
+    //             break;
+    //         case "4":
+    //             array4.push(postsList?.filter((numer) => numer.userId === 4));
+    //             break;
+    //         case "5":
+    //             array5.push(postsList?.filter((numer) => numer.userId === 5));
+    //             break;
+    //         case "6":
+    //             array6.push(postsList?.filter((numer) => numer.userId === 6));
+    //             break;
+    //         case "7":
+    //             array7.push(postsList?.filter((numer) => numer.userId === 7));
+    //             break;
+    //         case "8":
+    //             array8.push(postsList?.filter((numer) => numer.userId === 8));
+    //             break;
+    //         case "9":
+    //             array9.push(postsList?.filter((numer) => numer.userId === 9));
+    //             break;
+    //         case "10":
+    //             array10.push(postsList?.filter((numer) => numer.userId === 10));
+    //             break;
+    //     }
+    // }
+    //  {
+    //     switch (postsList?.[i]?.userId) {
+    //         case 1:
+    //             array1.push(postsList?.filter((numer) => numer.userId === 1));
+    //             break;
+    //         case 2:
+    //             array2.push(postsList?.filter((numer) => numer.userId === 1));
+    //             break;
+    //     }
+    // }
+    // const id = postsList?.filter((numer) => numer.userId === 1);
+
+    // //jedyne dzialajace
+    // for (let i = 0; i < postsList?.length; i++) {
+    //     if (usersList?.[1].id === postsList?.[i].userId)
+    //         array1.push({
+    //             id: usersList?.[1].id,
+    //             userId: postsList?.[i].userId,
+    //             postId: postsList?.[i].id,
+    //             name: usersList?.[1].name,
+    //             body: postsList?.[i].body,
+    //             title: postsList?.[i].title,
+    //         });
+    //     if (usersList?.[2].id === postsList?.[i].userId)
+    //         array1.push({
+    //             id: usersList?.[2].id,
+    //             userId: postsList?.[i].userId,
+    //             postId: postsList?.[i].id,
+    //             name: usersList?.[2].name,
+    //             body: postsList?.[i].body,
+    //             title: postsList?.[i].title,
+    //         });
+    //     if (usersList?.[3].id === postsList?.[i].userId)
+    //         array1.push({
+    //             id: usersList?.[3].id,
+    //             userId: postsList?.[i].userId,
+    //             postId: postsList?.[i].id,
+    //             name: usersList?.[3].name,
+    //             body: postsList?.[i].body,
+    //             title: postsList?.[i].title,
+    //         });
+    //     console.log(array1);
+    // }
+    // for (let i = 0; i <100; i++){
+    //     let zmiennaUser:number = 1
+    //     switch(postsList){
+
+    //     }
+    // }
+
     return (
         <MainWrapper>
             <LeftSide>
@@ -111,25 +234,40 @@ export const PublicationsShort: FC = () => {
                         {data.getDate()} {months[data.getMonth()]}{" "}
                         {data.getFullYear()}
                         {}
-                        <Photo src={photosList?.[0]?.url}>
-                            {/* <img src={photosList?.[0]?.url} alt="" /> */}
-                        </Photo>
+                        <Photo src={photosList?.[0]?.url}></Photo>
                         {usersList?.[9]?.name}
                     </Text>
                 </Img>
             </LeftSide>
+
             <RightSide>
                 <Title>Latest publications</Title>
                 <Post>
-                    <PhotoPost src={photosList?.[0]?.url}>
-                        {/* <img src={photosList?.[0]?.url} alt="" /> */}
-                    </PhotoPost>
+                    <PhotoPost src={photosList?.[0]?.url}></PhotoPost>
                     <TextPost>
                         <Content>
                             {postsList?.[0]?.title.charAt(0).toUpperCase() +
                                 postsList?.[0]?.title.slice(1)}
                         </Content>
-                        <Author>{usersList?.[9]?.name}</Author>
+                        <Author>
+                            {data.getDate()} {months[data.getMonth()]}{" "}
+                            {data.getFullYear()}
+                            {} {usersList?.[9]?.name}
+                        </Author>
+                    </TextPost>
+                </Post>
+                <Post>
+                    <PhotoPost src={photosList?.[0]?.url}></PhotoPost>
+                    <TextPost>
+                        <Content>
+                            {postsList?.[0]?.title.charAt(0).toUpperCase() +
+                                postsList?.[0]?.title.slice(1)}
+                        </Content>
+                        <Author>
+                            {data.getDate()} {months[data.getMonth()]}{" "}
+                            {data.getFullYear()}
+                            {} {usersList?.[9]?.name}
+                        </Author>
                     </TextPost>
                 </Post>
                 <Post>
@@ -138,25 +276,19 @@ export const PublicationsShort: FC = () => {
                     </PhotoPost>
                     <TextPost>
                         <Content>
-                            {postsList?.[0]?.title.charAt(0).toUpperCase() +
-                                postsList?.[0]?.title.slice(1)}
+                            {postsList?.[46]?.title.charAt(0).toUpperCase() +
+                                postsList?.[46]?.title.slice(1)}
                         </Content>
-                        <Author>{usersList?.[9]?.name}</Author>
+                        <Author>
+                            {data.getDate()} {months[data.getMonth()]}{" "}
+                            {data.getFullYear()}
+                            {} {usersList?.[9]?.name}
+                        </Author>
                     </TextPost>
                 </Post>
-                <Post>
-                    <PhotoPost src={photosList?.[0]?.url}>
-                        {/* <img src={photosList?.[0]?.url} alt="" /> */}
-                    </PhotoPost>
-                    <TextPost>
-                        <Content>
-                            {postsList?.[0]?.title.charAt(0).toUpperCase() +
-                                postsList?.[0]?.title.slice(1)}
-                        </Content>
-                        <Author>{usersList?.[9]?.name}</Author>
-                    </TextPost>
-                </Post>
-                <a href="../Publications/Publication">See more Publications</a>
+                <Link href="../Publications/Publication">
+                    See more Publications
+                </Link>
             </RightSide>
         </MainWrapper>
     );
@@ -176,13 +308,4 @@ const months = [
     "October",
     "November",
     "December",
-];
-const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
 ];
