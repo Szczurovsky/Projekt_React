@@ -113,16 +113,6 @@ const Link = styled.a`
 `;
 
 export const PublicationsShort: FC = () => {
-    let array1 = [];
-    let array2 = [];
-    let array3 = [];
-    let array4 = [];
-    let array5 = [];
-    let array6 = [];
-    let array7 = [];
-    let array8 = [];
-    let array9 = [];
-    let array10 = [];
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
     }));

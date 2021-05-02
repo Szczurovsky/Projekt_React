@@ -1,6 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
-import Posts from "../Pagination/Posts";
-import { Pagination } from "../Pagination/Pagination";
+import React, { FC, useEffect, useState, ChangeEvent } from "react";
+import Pagination2 from "../Pagination/Pagination2";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { getUsers } from "../../actions/userActions";
@@ -21,8 +20,6 @@ import { SupplierContract } from "../SupplierContract/SupplierContract";
 import { Contract } from "../Contract/Contract";
 import { GroupNorms } from "../GroupNorms/GroupNorms";
 import { RealEstateContracts } from "../RealEstateContracts/RealEstateContracts";
-import { Console } from "node:console";
-
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
 type GetPosts = ReturnType<typeof getPosts>;
@@ -68,9 +65,8 @@ const ResYourWork = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    max-height: 100vh;
+
     width: 100%;
-    background-color: red;
 `;
 const Tested = styled.div`
     margin: 20px 0;
@@ -85,7 +81,17 @@ const SliderContainer = styled.div`
     /* align-items: center;
     justify-content: center; */
 `;
+const Filter = styled.input`
+    width: 80%;
+
+    margin: 5% 10%;
+    color: gray;
+`;
 export const MainPage: FC = () => {
+    const [page, setPage] = useState(1);
+    const totalPages = 15;
+    const handlePages = (updatePage: number) => setPage(updatePage);
+    //
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -110,6 +116,13 @@ export const MainPage: FC = () => {
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+    const [inputText, setInputText] = useState<string>("");
+
+    const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        setInputText(text);
+    };
     return (
         <Router>
             <TopBar />
@@ -153,18 +166,18 @@ export const MainPage: FC = () => {
                                     <SliderComponent />
                                 </SliderContainer>
                                 <Subtitles>Resume Your Work</Subtitles>
-                                <ResYourWork className="container mt-5">
-                                    <h1 className="text-primary mb-3">
-                                        My Blog
-                                    </h1>
-                                    <Posts
-                                        posts={currentPosts}
-                                        loading={loading}
-                                    />
-                                    <Pagination
-                                        postsPerPage={postsPerPage}
-                                        totalPosts={posts.length}
-                                        paginate={paginate}
+                                <ResYourWork>
+                                    <Pagination2
+                                        publications="/publications"
+                                        people="/people"
+                                        entities="/entities"
+                                        administration="/administration"
+                                        clientContract="/clientContract"
+                                        supplierContract="/supplierContract"
+                                        corporate="/corporate"
+                                        groupNorms="/groupNorms"
+                                        realEstateContracts="/realEstateContracts"
+                                        number={Math.floor(Math.random() * 10)}
                                     />
                                 </ResYourWork>
                             </Route>
