@@ -34,7 +34,7 @@
 .test {
   height: 35%;
   width: 100%;
-  background-color: black;
+  background-color: royalblue;
   max-width: 80vw;
   margin: 0;
   padding: 0;
@@ -47,13 +47,13 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
-  top: 30%;
+  position: relative;
+  top: -18%;
 }
 
 .iconWrap p {
   font-size: 30px;
-  color: red;
+  color: black;
 }
 
 .icon {
@@ -75,5 +75,19 @@
   margin-left: 10px;
   margin-right: 10px;
   background-color: white;
+}
+
+.info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.info p {
+  font-size: 20px;
 }
 /*# sourceMappingURL=index.css.map */

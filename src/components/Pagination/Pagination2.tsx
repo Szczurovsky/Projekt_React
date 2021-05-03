@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Test } from "./Test";
 import "./App.css";
 interface IFoo {
     people: string;
@@ -99,21 +100,35 @@ function Pagination2(props: any) {
         const slice = data.slice(offset, offset + perPage);
         let randomItem = table[Math.floor(Math.random() * table.length)];
         const postData = slice.map((comment: any) => (
-            <div key={comment.id} className="tescik">
-                <p className="name">{comment.name}</p>
-                <p className="body">{comment.body}</p>
-                <div className="info">
-                    <p className="person">SUBS</p>
-                    <p className="workspace">
-                        {console.log(props.number)}
-                        <Link to={table[props.number].link}>
-                            {table[props.number].workspace}
-                        </Link>
-                    </p>
+            // <div key={comment.id} className="tescik">
+            //     <p className="name">{comment.name}</p>
+            //     <p className="body">{comment.body}</p>
+            //     <div className="info">
+            //         <p className="person">SUBS</p>
+            //         <p className="workspace">
+            //             {console.log(props.number)}
+            //             <Link to={table[props.number].link}>
+            //                 {table[props.number].workspace}
+            //             </Link>
+            //         </p>
 
-                    <p className="update"> Updated 3 days ago by John Doe</p>
-                </div>
-            </div>
+            //         <p className="update"> Updated 3 days ago by John Doe</p>
+            //     </div>
+            // </div>
+            <Test
+                id={comment.id}
+                comment={comment}
+                number={Math.floor(Math.random() * 9)}
+                publications="/publications"
+                people="/people"
+                entities="/entities"
+                administration="/administration"
+                clientContract="/clientContract"
+                supplierContract="/supplierContract"
+                corporate="/corporate"
+                groupNorms="/groupNorms"
+                realEstateContracts="/realEstateContracts"
+            />
         ));
 
         setData(postData);

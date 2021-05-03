@@ -64,3 +64,6 @@
 .info p {
     margin: 10px;
 }
+.workspace {
+    text-transform: capitalize;
+}

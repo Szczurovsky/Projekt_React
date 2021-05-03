@@ -27,7 +27,7 @@ html {
 .test {
     height: 35%;
     width: 100%;
-    background-color: black;
+    background-color: royalblue;
     max-width: 80vw;
     margin: 0;
     padding: 0;
@@ -35,12 +35,12 @@ html {
 .iconWrap {
     display: flex;
     align-items: center;
-    position: absolute;
-    top: 30%;
+    position: relative;
+    top: -18%;
 }
 .iconWrap p {
     font-size: 30px;
-    color: red;
+    color: black;
 }
 .icon {
     box-sizing: content-box;
@@ -51,8 +51,16 @@ html {
     width: 30%;
     font-size: 70px;
     padding: 10px;
-
     margin-left: 10px;
     margin-right: 10px;
     background-color: white;
+}
+.info {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    text-align: center;
+}
+.info p {
+    font-size: 20px;
 }

@@ -7,7 +7,7 @@ import { getPosts } from "../../actions/postActions";
 import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
 import { LeftMenu } from "../LeftMenu/LeftMenu";
-import { SliderComponent } from "../Workspaces/WorkspacesMainPage";
+import { SliderComponent } from "../Workspaces/SliderComponent";
 import { TopBar } from "../TopBar/TopBar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Publications } from "../Publications/Publications";
@@ -87,7 +87,7 @@ const Filter = styled.input`
     margin: 5% 10%;
     color: gray;
 `;
-export const MainPage: FC = () => {
+export const MainPage: FC = (props) => {
     const [page, setPage] = useState(1);
     const totalPages = 15;
     const handlePages = (updatePage: number) => setPage(updatePage);
@@ -158,6 +158,7 @@ export const MainPage: FC = () => {
                             <Route path="/realEstateContracts">
                                 <RealEstateContracts />
                             </Route>
+                            <Route path="/corporate">Corporate</Route>
                             <Route path="/">
                                 <Subtitles>Publications</Subtitles>
                                 <PublicationsShort />
