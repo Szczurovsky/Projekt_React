@@ -1,14 +1,15 @@
-import React, { FC, useState, ChangeEvent } from "react";
+import React, { FC, useState, ChangeEvent, useEffect } from "react";
 import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IUsersReducer } from "../../reducers/usersReducer";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { IPostsReducer } from "../../reducers/postsReducer";
 import wieżowiec from "../../icons/skyscraper.jpg";
+// import { MergePostUser } from "./MergePostUser";
 // import { getUsers } from "../../actions/userActions";
 // import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
-
+import axios from "axios";
 const MainWrapper = styled.div`
     height: 45vh;
     display: flex;
@@ -211,7 +212,56 @@ export const PublicationsShort: FC = () => {
 
     //     }
     // }
+    // const [offset, setOffset] = useState(0);
+    // const [data, setData] = useState([]);
+    // let array: any[] = new Array(10);
+    let array1: any[] = new Array();
 
+    const getData = async () => {
+        for (let i = 1; i <= 10; i++) {
+            const res = await axios.get(
+                `https://jsonplaceholder.typicode.com/users/${i}/posts`
+            );
+
+            // res.data[0] = { ...res.data[0], imie: "grzes" };
+            let data1 = res.data;
+
+            array1.push(data1);
+            // array1[number][i] = {
+            //     ...array1[number][i],
+            //     imie: "bonek",
+            // };
+
+            // number += 1;
+        }
+
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                if (array1[i][j].userId === 1) {
+                    array1[i][j] = {
+                        ...array1[i][j],
+                        imie: "bonek",
+                        nazwisko: "lysy",
+                    };
+                }
+            }
+        }
+        console.log(array1);
+        // console.log(array1);
+        // for (let i = 1; i <= 10; i++) {
+        //     fetch(`https://jsonplaceholder.typicode.com/users/${i}/posts`,{
+        //         method:"PUT",
+        //         body: JSON.stringify({
+        //             id:1,
+        //         })
+        //     })
+        //     .then()
+        // }
+    };
+
+    useEffect(() => {
+        getData();
+    }, []);
     return (
         <MainWrapper>
             <LeftSide>

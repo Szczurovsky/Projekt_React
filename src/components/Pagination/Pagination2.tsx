@@ -91,30 +91,14 @@ function Pagination2(props: any) {
             number: table1.number,
         },
     ];
-    let randomItem = () => {};
+
     const getData = async () => {
         const res = await axios.get(
             `https://jsonplaceholder.typicode.com/comments`
         );
         const data = res.data;
         const slice = data.slice(offset, offset + perPage);
-        let randomItem = table[Math.floor(Math.random() * table.length)];
         const postData = slice.map((comment: any) => (
-            // <div key={comment.id} className="tescik">
-            //     <p className="name">{comment.name}</p>
-            //     <p className="body">{comment.body}</p>
-            //     <div className="info">
-            //         <p className="person">SUBS</p>
-            //         <p className="workspace">
-            //             {console.log(props.number)}
-            //             <Link to={table[props.number].link}>
-            //                 {table[props.number].workspace}
-            //             </Link>
-            //         </p>
-
-            //         <p className="update"> Updated 3 days ago by John Doe</p>
-            //     </div>
-            // </div>
             <Test
                 id={comment.id}
                 comment={comment}
