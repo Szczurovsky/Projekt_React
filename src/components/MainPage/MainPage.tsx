@@ -7,12 +7,15 @@ import { getPosts } from "../../actions/postActions";
 import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
 import { LeftMenu } from "../LeftMenu/LeftMenu";
+import ProfileForm from "../Profile/ProfileForm";
+
 import { SliderComponent } from "../Workspaces/SliderComponent";
 import { TopBar } from "../TopBar/TopBar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Publications } from "../Publications/Publications";
 import { PublicationsShort } from "../Publications/PublicationsShort";
 import { People } from "../People/People";
+import Profilek from "../Profile/Profile";
 import { Entities } from "../Entities/Entities";
 import { Administration } from "../Administration/Administration";
 import { ClientContract } from "../ClientContract/ClientContract";
@@ -159,6 +162,10 @@ export const MainPage: FC = (props) => {
                                 <RealEstateContracts />
                             </Route>
                             <Route path="/corporate">Corporate</Route>
+                            <Route path="/profile">
+                                <Profilek />
+                            </Route>
+                            <Route path="/profileForm"></Route>
                             <Route path="/">
                                 <Subtitles>Publications</Subtitles>
                                 <PublicationsShort />

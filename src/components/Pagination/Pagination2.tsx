@@ -97,7 +97,15 @@ function Pagination2(props: any) {
             `https://jsonplaceholder.typicode.com/comments`
         );
         const data = res.data;
-        const slice = data.slice(offset, offset + perPage);
+        const slice = data
+            .slice(offset, offset + perPage)
+            .filter((elem: any) => {
+                // elem.postId.includes("s");
+                // return elem;   c
+                console.log(elem.body.includes("1"));
+                return elem;
+            });
+        // console.log(slice);
         const postData = slice.map((comment: any) => (
             <Test
                 id={comment.id}
@@ -128,22 +136,30 @@ function Pagination2(props: any) {
     }, [offset]);
 
     return (
-        <div className="App">
-            {data}
-            {console.log(data)}
-            <ReactPaginate
-                previousLabel={"Poprzednie"}
-                nextLabel={"Następne"}
-                breakLabel={"..."}
-                breakClassName={"break-me"}
-                pageCount={pageCount}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={handlePageClick}
-                containerClassName={"pagination"}
-                activeClassName={"active"}
+        <>
+            <Filter
+                type="text"
+                value={inputText}
+                onChange={inputHandler}
+                placeholder="Wprowadź tekst"
             />
-        </div>
+            <div className="App">
+                {data}
+
+                <ReactPaginate
+                    previousLabel={"Poprzednie"}
+                    nextLabel={"Następne"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={handlePageClick}
+                    containerClassName={"pagination"}
+                    activeClassName={"active"}
+                />
+            </div>
+        </>
     );
 }
 

@@ -1,4 +1,10 @@
-import React, { FC, useState, ChangeEvent, useEffect } from "react";
+import React, {
+    FC,
+    useState,
+    ChangeEvent,
+    useEffect,
+    FunctionComponent,
+} from "react";
 import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IUsersReducer } from "../../reducers/usersReducer";
@@ -125,96 +131,7 @@ export const PublicationsShort: FC = () => {
     const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
         ...globalState.posts,
     }));
-    // postsList?.forEach((id) =>{
-
-    // })
-    // for (let item in postsList) {
-    //     // console.log(`${postsList[item].userId}`);
-    //     switch (item) {
-    //         case "1":
-    //             array1.push(postsList?.filter((numer) => numer.userId === 1));
-    //             break;
-    //         case "2":
-    //             array2.push(postsList?.filter((numer) => numer.userId === 2));
-    //             break;
-    //         case "3":
-    //             array3.push(postsList?.filter((numer) => numer.userId === 3));
-    //             break;
-    //         case "4":
-    //             array4.push(postsList?.filter((numer) => numer.userId === 4));
-    //             break;
-    //         case "5":
-    //             array5.push(postsList?.filter((numer) => numer.userId === 5));
-    //             break;
-    //         case "6":
-    //             array6.push(postsList?.filter((numer) => numer.userId === 6));
-    //             break;
-    //         case "7":
-    //             array7.push(postsList?.filter((numer) => numer.userId === 7));
-    //             break;
-    //         case "8":
-    //             array8.push(postsList?.filter((numer) => numer.userId === 8));
-    //             break;
-    //         case "9":
-    //             array9.push(postsList?.filter((numer) => numer.userId === 9));
-    //             break;
-    //         case "10":
-    //             array10.push(postsList?.filter((numer) => numer.userId === 10));
-    //             break;
-    //     }
-    // }
-    //  {
-    //     switch (postsList?.[i]?.userId) {
-    //         case 1:
-    //             array1.push(postsList?.filter((numer) => numer.userId === 1));
-    //             break;
-    //         case 2:
-    //             array2.push(postsList?.filter((numer) => numer.userId === 1));
-    //             break;
-    //     }
-    // }
-    // const id = postsList?.filter((numer) => numer.userId === 1);
-
-    // //jedyne dzialajace
-    // for (let i = 0; i < postsList?.length; i++) {
-    //     if (usersList?.[1].id === postsList?.[i].userId)
-    //         array1.push({
-    //             id: usersList?.[1].id,
-    //             userId: postsList?.[i].userId,
-    //             postId: postsList?.[i].id,
-    //             name: usersList?.[1].name,
-    //             body: postsList?.[i].body,
-    //             title: postsList?.[i].title,
-    //         });
-    //     if (usersList?.[2].id === postsList?.[i].userId)
-    //         array1.push({
-    //             id: usersList?.[2].id,
-    //             userId: postsList?.[i].userId,
-    //             postId: postsList?.[i].id,
-    //             name: usersList?.[2].name,
-    //             body: postsList?.[i].body,
-    //             title: postsList?.[i].title,
-    //         });
-    //     if (usersList?.[3].id === postsList?.[i].userId)
-    //         array1.push({
-    //             id: usersList?.[3].id,
-    //             userId: postsList?.[i].userId,
-    //             postId: postsList?.[i].id,
-    //             name: usersList?.[3].name,
-    //             body: postsList?.[i].body,
-    //             title: postsList?.[i].title,
-    //         });
-    //     console.log(array1);
-    // }
-    // for (let i = 0; i <100; i++){
-    //     let zmiennaUser:number = 1
-    //     switch(postsList){
-
-    //     }
-    // }
-    // const [offset, setOffset] = useState(0);
-    // const [data, setData] = useState([]);
-    // let array: any[] = new Array(10);
+    let array2: any[] = new Array();
     let array1: any[] = new Array();
 
     const getData = async () => {
@@ -227,12 +144,6 @@ export const PublicationsShort: FC = () => {
             let data1 = res.data;
 
             array1.push(data1);
-            // array1[number][i] = {
-            //     ...array1[number][i],
-            //     imie: "bonek",
-            // };
-
-            // number += 1;
         }
 
         for (let i = 0; i < 10; i++) {
@@ -240,36 +151,61 @@ export const PublicationsShort: FC = () => {
                 if (array1[i][j].userId === 1) {
                     array1[i][j] = {
                         ...array1[i][j],
-                        imie: "bonek",
-                        nazwisko: "lysy",
+                        imie: "Leanne Graham",
+                    };
+                } else if (array1[i][j].userId === 2) {
+                    array1[i][j] = {
+                        ...array1[i][j],
+                        imie: "Ervin Howell",
+                    };
+                } else if (array1[i][j].userId === 3) {
+                    array1[i][j] = {
+                        ...array1[i][j],
+                        imie: "Clementine Bauch",
                     };
                 }
             }
         }
-        console.log(array1);
-        // console.log(array1);
-        // for (let i = 1; i <= 10; i++) {
-        //     fetch(`https://jsonplaceholder.typicode.com/users/${i}/posts`,{
-        //         method:"PUT",
-        //         body: JSON.stringify({
-        //             id:1,
-        //         })
-        //     })
-        //     .then()
-        // }
+
+        return array1;
     };
 
-    useEffect(() => {
-        getData();
-    }, []);
+    const printArray = () => {
+        const a = getData();
+        array2.push(a);
+        // const b = a[number][number1];
+        // return b;
+    };
+    printArray();
+    console.log(array2?.[0][2]);
+
+    // powyzej jest ok
+
+    // const Test = props => {
+    //     const [array3, setArray] = React.useState([]);
+    //     React.useEffect(() => {
+    //         const fetchArray = async () => {
+    //             const response = await fetch(
+    //                 `https://jsonplaceholder.typicode.com/users/i/posts`
+    //             );
+    //             const { array3 } = await response.json();
+    //             setArray(array3);
+    //         };
+    //         fetchArray();
+    //     }, []);
+    // };
+    {
+    }
     return (
         <MainWrapper>
             <LeftSide>
+                {/* {console.log(array3?.[0])} */}
                 <Img>
                     <Text>
                         {postsList?.[0]?.title.charAt(0).toUpperCase() +
                             postsList?.[0]?.title.slice(1)}
-                    </Text>
+                    </Text>{" "}
+                    {console.log(array2)}
                     <Text>
                         {data.getDate()} {months[data.getMonth()]}{" "}
                         {data.getFullYear()}

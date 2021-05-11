@@ -23,28 +23,6 @@ export const SliderComponent: FC = (props: any) => {
     };
     return (
         <Slider {...settings}>
-            {/* <div className="card-wrapper">
-                <div className="card">
-                    <div className="test"></div>
-                    <div className="iconWrap">
-                        <div className="icon">
-                            <FaFileContract />
-                        </div>
-                        <p>Client contract</p>
-                    </div>
-                    <div className="info">
-                        <p>
-                            <FaFileContract />
-                            Contract
-                        </p>
-                        <p>
-                            <BsFillPeopleFill />
-                            {Math.floor(Math.random() * 150)} users
-                        </p>
-                    </div>
-                    <p>Last update {Math.floor(Math.random() * 30)} days ago</p>
-                </div>
-            </div> */}
             <Workspace
                 icon={<FaFileContract />}
                 workspace="Client contract"
