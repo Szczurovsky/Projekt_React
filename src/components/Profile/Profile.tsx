@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Profil } from "./Profil";
 import ProfileForm from "./ProfileForm";
 import { Formik } from "formik";
-
+import { IState } from "../../reducers";
+import { useSelector } from "react-redux";
+import { IUsersReducer } from "../../reducers/usersReducer";
+import { IPhotosReducer } from "../../reducers/photosReducer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 // import "./style/licznik.css";
 const Linked = styled.p`
@@ -44,7 +47,14 @@ interface IProps {
     imionko?: any;
 }
 class Profilek extends React.Component<any, any> {
-    state = { imie: "weronika", fetched: false };
+    state = {
+        imie: "",
+        company: "",
+        address: "",
+        username: "",
+        phone: "",
+        email: "",
+    };
 
     passImie = (passedImie: any) => {
         this.setState({ imie: passedImie });
@@ -63,12 +73,17 @@ class Profilek extends React.Component<any, any> {
         );
     }
 }
-interface IProps1 {
-    render: any;
-}
+
 const Profile: FC<IProps> = (props: any) => {
     const [editMode, setMode] = useState<boolean>(true);
-
+    const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
+        ...globalState.users,
+    }));
+    const { photosList } = useSelector<IState, IPhotosReducer>(
+        (globalState) => ({
+            ...globalState.photos,
+        })
+    );
     return (
         <>
             {editMode ? (
