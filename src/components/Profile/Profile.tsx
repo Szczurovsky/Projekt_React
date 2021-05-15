@@ -22,6 +22,7 @@ const Links = styled(Link)`
     font-family: roboto, sans-serif;
     letter-spacing: 0.5px;
 `;
+
 // class Profile extends React.Component<any, any> {
 //     state = {
 //         count: 0,
@@ -45,30 +46,51 @@ interface IProps {
     mode?: any;
     mod?: any;
     imionko?: any;
+    company?: any;
+    address?: any;
+    username?: any;
+    phone?: any;
+    email?: any;
 }
 class Profilek extends React.Component<any, any> {
     state = {
-        imie: "",
-        company: "",
-        address: "",
-        username: "",
-        phone: "",
-        email: "",
+        imie: "Humberta Swift",
+        company: "Clifford Chance",
+        address: "New York",
+        username: "Partner",
+        phone: "+33 (0)6 12 34 56 78",
+        email: "humbertaswift@gmail.com",
     };
-
-    passImie = (passedImie: any) => {
-        this.setState({ imie: passedImie });
+    getUsers = () => {};
+    passImie = (
+        passedImie: any,
+        passedCompany: any,
+        passedAddress: any,
+        passedUsername: any,
+        passedPhone: number,
+        passedEmail: any
+    ) => {
+        this.setState({
+            imie: passedImie,
+            company: passedCompany,
+            address: passedAddress,
+            username: passedUsername,
+            phone: passedPhone,
+            email: passedEmail,
+        });
     };
     render() {
         return (
             <>
-                <Profile imionko={this.state.imie} passImie={this.passImie} />
-
-                <button
-                    onClick={() => {
-                        console.log(this.state.imie);
-                    }}
-                ></button>
+                <Profile
+                    imionko={this.state.imie}
+                    company={this.state.company}
+                    address={this.state.address}
+                    phone={this.state.phone}
+                    email={this.state.email}
+                    username={this.state.username}
+                    passImie={this.passImie}
+                />
             </>
         );
     }
@@ -87,11 +109,24 @@ const Profile: FC<IProps> = (props: any) => {
     return (
         <>
             {editMode ? (
-                <Profil mode={setMode} imie={props.imionko} />
+                <Profil
+                    mode={setMode}
+                    imie={props.imionko}
+                    company={props.company}
+                    address={props.address}
+                    phone={props.phone}
+                    email={props.email}
+                    username={props.username}
+                />
             ) : (
                 <ProfileForm
                     mode={setMode}
                     imie={props.imionko}
+                    company={props.company}
+                    address={props.address}
+                    phone={props.phone}
+                    email={props.email}
+                    username={props.username}
                     passImie={props.passImie}
                 />
             )}

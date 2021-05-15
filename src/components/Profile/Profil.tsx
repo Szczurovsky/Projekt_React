@@ -8,12 +8,17 @@ import { IPostsReducer } from "../../reducers/postsReducer";
 interface IProps {
     mode: any;
     imie: any;
+    company?: any;
+    address?: any;
+    username?: any;
+    phone?: number;
+    email?: any;
 }
 
 const MainWrapper = styled.div`
     width: 100%;
     background-color: #fff;
-    height: 15%;
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +37,8 @@ const Name = styled.div`
     background-color: yellow;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 `;
 const Contact = styled.div`
@@ -39,6 +46,8 @@ const Contact = styled.div`
     background-color: violet;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 `;
 const PhotoComponent = styled.img`
@@ -46,6 +55,7 @@ const PhotoComponent = styled.img`
     border-radius: 90%;
 `;
 const Link = styled.a``;
+
 const Info = styled.p``;
 export const Profil: FC<IProps> = (props) => {
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
@@ -64,17 +74,17 @@ export const Profil: FC<IProps> = (props) => {
             </Photo>
             <Name>
                 <Info>{props.imie}</Info>
-                <Info>{usersList?.[2]?.company.name}</Info>
-                <Info>{usersList?.[2]?.address.city}</Info>
-                <Info>{usersList?.[2]?.username}</Info>
+                <Info>{props.company}</Info>
+                <Info>{props.address}</Info>
+                <Info>{props.username}</Info>
                 {/* <Info>{usersList?.[9]?.name}</Info>
                 <Info>{usersList?.[9]?.name}</Info> */}
             </Name>
             <Contact>
                 {" "}
                 <button onClick={() => props.mode(false)}>Edit</button>
-                <Info>{usersList?.[2]?.phone}</Info>
-                <Info>{usersList?.[2]?.email}</Info>
+                <Info>{props.phone}</Info>
+                <Info>{props.email}</Info>
             </Contact>
         </MainWrapper>
     );

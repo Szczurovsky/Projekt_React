@@ -89,11 +89,11 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
-
+import "./style/form.css";
 const MainWrapper = styled.div`
     width: 100%;
     background-color: #fff;
-    height: 15%;
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,6 +131,11 @@ class ProfileForm extends React.Component<any, any> {
     state = {
         imie: this.props.imie,
         photo: this.props.photo,
+        company: this.props.company,
+        address: this.props.address,
+        username: this.props.username,
+        phone: this.props.phone,
+        email: this.props.email,
     };
     //funkcja setsTate miala problem dlatego przejscie na funkcje strzałkowa
     // handleChange = (target: any) => {
@@ -139,8 +144,6 @@ class ProfileForm extends React.Component<any, any> {
     render() {
         return (
             <>
-                {console.log(this.state.imie)}
-                <p>{this.state.imie}</p>
                 <Formik
                     initialValues={this.state}
                     onSubmit={(values) => {
@@ -160,23 +163,54 @@ class ProfileForm extends React.Component<any, any> {
                                 <Link>See profile</Link>
                             </Photo>
                             <Name>
-                                <form onSubmit={handleSubmit}>
+                                <form onSubmit={handleSubmit} className="form">
                                     <input
                                         name="imie"
                                         onChange={handleChange}
                                         value={values.imie}
+                                    />
+                                    <input
+                                        name="company"
+                                        onChange={handleChange}
+                                        value={values.company}
+                                    />
+                                    <input
+                                        name="address"
+                                        onChange={handleChange}
+                                        value={values.address}
+                                    />
+                                    <input
+                                        name="username"
+                                        onChange={handleChange}
+                                        value={values.username}
                                     />
                                 </form>
                                 {/* <Info>{usersList?.[9]?.name}</Info>
                 <Info>{usersList?.[9]?.name}</Info> */}
                             </Name>
                             <Contact>
-                                {" "}
+                                <input
+                                    name="phone"
+                                    onChange={handleChange}
+                                    value={values.phone}
+                                />
+                                <input
+                                    name="email"
+                                    onChange={handleChange}
+                                    value={values.email}
+                                />
                                 <button
                                     type="submit"
                                     onClick={() => {
                                         this.props.mode(true);
-                                        this.props.passImie(values.imie);
+                                        this.props.passImie(
+                                            values.imie,
+                                            values.company,
+                                            values.address,
+                                            values.username,
+                                            values.email,
+                                            values.phone
+                                        );
                                     }}
                                 >
                                     Edit
