@@ -1,6 +1,8 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Profil } from "./Profil";
+import { PanelInfo } from "./PanelInfo";
+import PanelInfoForm from "./PanelInfoForm";
 import ProfileForm from "./ProfileForm";
 import { Formik } from "formik";
 import { IState } from "../../reducers";
@@ -51,6 +53,11 @@ interface IProps {
     username?: any;
     phone?: any;
     email?: any;
+    expertise?: any;
+    specialities?: any;
+    admission?: any;
+    counties?: any;
+    passOther?: any;
 }
 class Profilek extends React.Component<any, any> {
     state = {
@@ -60,15 +67,19 @@ class Profilek extends React.Component<any, any> {
         username: "Partner",
         phone: "+33 (0)6 12 34 56 78",
         email: "humbertaswift@gmail.com",
+        expertise: "Mergers and acquisition",
+        specialities: "Cross border operation",
+        admission: "Paris bar Association",
+        counties: "Tunisia",
     };
     getUsers = () => {};
     passImie = (
-        passedImie: any,
-        passedCompany: any,
-        passedAddress: any,
-        passedUsername: any,
-        passedPhone: number,
-        passedEmail: any
+        passedImie?: any,
+        passedCompany?: any,
+        passedAddress?: any,
+        passedUsername?: any,
+        passedPhone?: number,
+        passedEmail?: any
     ) => {
         this.setState({
             imie: passedImie,
@@ -77,6 +88,19 @@ class Profilek extends React.Component<any, any> {
             username: passedUsername,
             phone: passedPhone,
             email: passedEmail,
+        });
+    };
+    passOther = (
+        passedExpertise?: any,
+        passedSpecialities?: any,
+        passedAdmission?: any,
+        passedCounties?: any
+    ) => {
+        this.setState({
+            expertise: passedExpertise,
+            specialities: passedSpecialities,
+            admission: passedAdmission,
+            counties: passedCounties,
         });
     };
     render() {
@@ -89,7 +113,12 @@ class Profilek extends React.Component<any, any> {
                     phone={this.state.phone}
                     email={this.state.email}
                     username={this.state.username}
+                    expertise={this.state.expertise}
+                    specialities={this.state.specialities}
+                    admission={this.state.admission}
+                    counties={this.state.counties}
                     passImie={this.passImie}
+                    passOther={this.passOther}
                 />
             </>
         );
@@ -98,6 +127,7 @@ class Profilek extends React.Component<any, any> {
 
 const Profile: FC<IProps> = (props: any) => {
     const [editMode, setMode] = useState<boolean>(true);
+    const [editModeSecond, setModeSecond] = useState<boolean>(true);
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
     }));
@@ -108,31 +138,50 @@ const Profile: FC<IProps> = (props: any) => {
     );
     return (
         <>
-            {editMode ? (
-                <Profil
-                    mode={setMode}
-                    imie={props.imionko}
-                    company={props.company}
-                    address={props.address}
-                    phone={props.phone}
-                    email={props.email}
-                    username={props.username}
-                />
-            ) : (
-                <ProfileForm
-                    mode={setMode}
-                    imie={props.imionko}
-                    company={props.company}
-                    address={props.address}
-                    phone={props.phone}
-                    email={props.email}
-                    username={props.username}
-                    passImie={props.passImie}
-                />
-            )}
-
-            {/* <button onClick={() => setMode(false)}>Edit</button> */}
-            {/* <button onClick={() => setMode(true)}>Edit</button> */}
+            <>
+                {editMode ? (
+                    <Profil
+                        mode={setMode}
+                        imie={props.imionko}
+                        company={props.company}
+                        address={props.address}
+                        phone={props.phone}
+                        email={props.email}
+                        username={props.username}
+                    />
+                ) : (
+                    <ProfileForm
+                        mode={setMode}
+                        imie={props.imionko}
+                        company={props.company}
+                        address={props.address}
+                        phone={props.phone}
+                        email={props.email}
+                        username={props.username}
+                        passImie={props.passImie}
+                    />
+                )}
+            </>
+            <>
+                {editModeSecond ? (
+                    <PanelInfo
+                        mode={setModeSecond}
+                        expertise={props.expertise}
+                        specialities={props.specialities}
+                        admission={props.admission}
+                        counties={props.counties}
+                    />
+                ) : (
+                    <PanelInfoForm
+                        mode={setModeSecond}
+                        expertise={props.expertise}
+                        specialities={props.specialities}
+                        admission={props.admission}
+                        counties={props.counties}
+                        passOther={props.passOther}
+                    />
+                )}
+            </>
         </>
     );
 };

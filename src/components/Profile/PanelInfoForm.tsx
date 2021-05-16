@@ -88,40 +88,38 @@
 // };
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Formik } from "formik";
-import "./style/form.css";
+import { Formik, Field } from "formik";
+import "./style/formPanel.css";
 const MainWrapper = styled.div`
     width: 100%;
-    height: 20%;
-`;
-const Photo = styled.div`
-    width: 10%;
-    background-color: red;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 `;
+
 const Name = styled.div`
     width: 40%;
-    background-color: yellow;
     height: 100%;
     display: flex;
+    align-items: center;
     flex-direction: column;
+`;
+const Subtitle = styled.p`
+    font-size: 16px;
+    color: gray;
 `;
 const Contact = styled.div`
     width: 50%;
-    background-color: violet;
     height: 100%;
     display: flex;
+
     flex-direction: column;
 `;
 const PhotoComponent = styled.img`
     display: block;
     border-radius: 90%;
 `;
+
 const FirstSection = styled.div`
+    width: 100%;
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -130,23 +128,15 @@ const FirstSection = styled.div`
 `;
 const SecondSection = styled.div`
     height: 500%;
-    background-color: blue;
 `;
 const Link = styled.a``;
 const Info = styled.p``;
-class ProfileForm extends React.Component<any, any> {
+class PanelInfoForm extends React.Component<any, any> {
     state = {
-        imie: this.props.imie,
-        photo: this.props.photo,
-        company: this.props.company,
-        address: this.props.address,
-        username: this.props.username,
-        phone: this.props.phone,
-        email: this.props.email,
-        // expertise: this.props.expertise,
-        // specialities: this.props.specialities,
-        // admission: this.props.admission,
-        // counties: this.props.counties,
+        expertise: this.props.expertise,
+        specialities: this.props.specialities,
+        admission: this.props.admission,
+        counties: this.props.counties,
     };
     //funkcja setsTate miala problem dlatego przejscie na funkcje strzałkowa
     // handleChange = (target: any) => {
@@ -170,67 +160,67 @@ class ProfileForm extends React.Component<any, any> {
                     }) => (
                         <MainWrapper>
                             <FirstSection>
-                                <Photo>
-                                    <PhotoComponent src={this.state.photo} />
-                                    <Link>See profile</Link>
-                                </Photo>
                                 <Name>
-                                    <form
-                                        onSubmit={handleSubmit}
-                                        className="form"
-                                    >
+                                    <Subtitle>Expertise</Subtitle>
+                                    <Info>
+                                        {" "}
                                         <input
-                                            name="imie"
+                                            name="expertise"
                                             onChange={handleChange}
-                                            value={values.imie}
+                                            value={values.expertise}
                                         />
+                                    </Info>
+                                    <Subtitle>Specialities</Subtitle>
+                                    <Info>
                                         <input
-                                            name="company"
+                                            name="specialities"
                                             onChange={handleChange}
-                                            value={values.company}
+                                            value={values.specialities}
                                         />
-                                        <input
-                                            name="address"
-                                            onChange={handleChange}
-                                            value={values.address}
-                                        />
-                                        <input
-                                            name="username"
-                                            onChange={handleChange}
-                                            value={values.username}
-                                        />
-                                    </form>
+                                    </Info>
+                                    <Subtitle>Admission</Subtitle>
+                                    <Info>
+                                        <Field as="select" name="admission">
+                                            <option value="a">a</option>
+                                            <option value="b">b</option>
+                                            <option value="c">c</option>
+                                        </Field>
+                                    </Info>
+                                    <Subtitle>Counties</Subtitle>
+                                    <Info>
+                                        {/* <Field
+                                            type="email"
+                                            name="admission"
+                                            placeholder={values.admission}
+                                        /> */}
+                                        <Field as="select" name="counties">
+                                            <option value="Poland">
+                                                Poland
+                                            </option>
+                                            <option value="Greece">
+                                                Greece
+                                            </option>
+                                            <option value="Japan">Japan</option>
+                                        </Field>
+                                    </Info>
                                     {/* <Info>{usersList?.[9]?.name}</Info>
                 <Info>{usersList?.[9]?.name}</Info> */}
-                                </Name>
-                                <Contact>
-                                    <input
-                                        name="phone"
-                                        onChange={handleChange}
-                                        value={values.phone}
-                                    />
-                                    <input
-                                        name="email"
-                                        onChange={handleChange}
-                                        value={values.email}
-                                    />
+
                                     <button
                                         type="submit"
                                         onClick={() => {
                                             this.props.mode(true);
-                                            this.props.passImie(
-                                                values.imie,
-                                                values.company,
-                                                values.address,
-                                                values.username,
-                                                values.email,
-                                                values.phone
+                                            this.props.passOther(
+                                                values.expertise,
+                                                values.specialities,
+                                                values.admission,
+                                                values.counties
                                             );
                                         }}
                                     >
                                         Edit
                                     </button>
-                                </Contact>
+                                </Name>
                             </FirstSection>
                             {/* <SecondSection>
                                 ssss
@@ -280,7 +270,7 @@ class ProfileForm extends React.Component<any, any> {
         );
     }
 }
-export default ProfileForm;
+export default PanelInfoForm;
 // import React, { FC } from "react";
 // import styled from "styled-components";
 

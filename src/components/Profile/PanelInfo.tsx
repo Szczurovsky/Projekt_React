@@ -7,47 +7,34 @@ import { IPhotosReducer } from "../../reducers/photosReducer";
 import { IPostsReducer } from "../../reducers/postsReducer";
 interface IProps {
     mode: any;
-    imie: any;
-    company?: any;
-    address?: any;
-    username?: any;
-    phone?: number;
-    email?: any;
-    // expertise?: any;
-    // specialities?: any;
-    // admission?: any;
-    // counties?: any;
+
+    expertise?: any;
+    specialities?: any;
+    admission?: any;
+    counties?: any;
 }
 
 const MainWrapper = styled.div`
     width: 100%;
-    height: 20%;
-`;
-const Photo = styled.div`
-    width: 10%;
-    background-color: red;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 `;
+
 const Name = styled.div`
     width: 40%;
-    background-color: yellow;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+`;
+const Subtitle = styled.p`
+    font-size: 16px;
+    color: gray;
 `;
 const Contact = styled.div`
     width: 50%;
-    background-color: violet;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
     flex-direction: column;
 `;
 const PhotoComponent = styled.img`
@@ -65,10 +52,9 @@ const FirstSection = styled.div`
 `;
 const SecondSection = styled.div`
     height: 500%;
-    background-color: blue;
 `;
 const Info = styled.p``;
-export const Profil: FC<IProps> = (props) => {
+export const PanelInfo: FC<IProps> = (props) => {
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
     }));
@@ -80,23 +66,21 @@ export const Profil: FC<IProps> = (props) => {
     return (
         <MainWrapper>
             <FirstSection>
-                <Photo>
-                    <PhotoComponent src={photosList?.[0]?.url} />
-                    <Link>See profile</Link>
-                </Photo>
                 <Name>
-                    <Info>{props.imie}</Info>
-                    <Info>{props.company}</Info>
-                    <Info>{props.address}</Info>
-                    <Info>{props.username}</Info>
+                    <Subtitle>Expertise</Subtitle>
+                    <Info>{props.expertise}</Info>
+                    <Subtitle>Specialities</Subtitle>
+                    <Info>{props.specialities}</Info>
+                    <Subtitle>Admission</Subtitle>
+                    <Info>{props.admission}</Info>
+                    <Subtitle>Counties</Subtitle>
+                    <Info>{props.counties}</Info>
                     {/* <Info>{usersList?.[9]?.name}</Info>
                 <Info>{usersList?.[9]?.name}</Info> */}
                 </Name>
                 <Contact>
                     {" "}
                     <button onClick={() => props.mode(false)}>Edit</button>
-                    <Info>{props.phone}</Info>
-                    <Info>{props.email}</Info>
                 </Contact>
             </FirstSection>
             {/* <SecondSection>sss</SecondSection> */}
