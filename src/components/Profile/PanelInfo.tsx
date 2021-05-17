@@ -12,6 +12,26 @@ interface IProps {
     specialities?: any;
     admission?: any;
     counties?: any;
+    fee?: any;
+    terms?: any;
+    attachment?: any;
+    services?: any;
+    internalCorr?: any;
+    propName?: any;
+    propEntity?: any;
+    propLocation?: any;
+    propExpertise?: any;
+    propDate?: any;
+    propFirm?: any;
+    interName?: any;
+    interEntity?: any;
+    interLocation?: any;
+    interExpertise?: any;
+    interDate?: any;
+    amountYear?: any;
+    amountCost?: any;
+    amountTotal?: any;
+    amountLaw?: any;
 }
 
 const MainWrapper = styled.div`
@@ -31,10 +51,10 @@ const Subtitle = styled.p`
     color: gray;
 `;
 const Contact = styled.div`
-    width: 50%;
+    width: 5%;
     height: 100%;
     display: flex;
-
+    margin-right: 20px;
     flex-direction: column;
 `;
 const PhotoComponent = styled.img`
@@ -45,15 +65,32 @@ const Link = styled.a``;
 const FirstSection = styled.div`
     width: 100%;
     background-color: #fff;
-    height: 100%;
+    height: 20%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 `;
 const SecondSection = styled.div`
-    height: 500%;
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+const Panel = styled.div`
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `;
 const Info = styled.p``;
+const ProfWrap = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
 export const PanelInfo: FC<IProps> = (props) => {
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
@@ -81,8 +118,23 @@ export const PanelInfo: FC<IProps> = (props) => {
                 <Contact>
                     {" "}
                     <button onClick={() => props.mode(false)}>Edit</button>
-                </Contact>
+                </Contact>{" "}
             </FirstSection>
+            <Panel>
+                <Subtitle>Fee</Subtitle>
+                <Info>{props.fee}</Info>
+                <Subtitle>Terms {"&"} Conditions</Subtitle>
+                <Info>{props.terms}</Info>
+                <Info>{props.attachment}</Info>
+                <Subtitle>Services {"&"} projects</Subtitle>
+                <Info>{props.services}</Info>
+                <Subtitle>Internal correspondants</Subtitle>
+                <ProfWrap>
+                    <img src={photosList?.[0]?.url} alt="" />
+                    <Info>{props.internalCorr}</Info>
+                </ProfWrap>
+            </Panel>
+
             {/* <SecondSection>sss</SecondSection> */}
         </MainWrapper>
     );
