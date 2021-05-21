@@ -25,24 +25,6 @@ const Links = styled(Link)`
     letter-spacing: 0.5px;
 `;
 
-// class Profile extends React.Component<any, any> {
-//     state = {
-//         count: 0,
-//         result: this.props.result,
-//     };
-//     //funkcja setsTate miala problem dlatego przejscie na funkcje strzałkowa
-
-//     render() {
-//         return (
-//             <>
-//                 <Linked>
-//                     {" "}
-//                     <Links to="/ProfileForm"> Edytuj</Links>
-//                 </Linked>
-//             </>
-//         );
-//     }
-// }
 interface IProps {
     passImie?: any;
     mode?: any;
@@ -62,6 +44,7 @@ interface IProps {
     attachment?: any;
     services?: any;
     internalCorr?: any;
+    internalCorr1?: any;
     propName?: any;
     propEntity?: any;
     propLocation?: any;
@@ -97,28 +80,80 @@ class Profilek extends React.Component<any, any> {
         attachment: "Nie wybrano pliku",
         services: "Corporate M&A and international acquisitions",
         internalCorr: "Leanne Graham",
-
-        propName: ["Operation Syriusz", "Op. Prometheus", "Op.Latandre"],
-        propEntity: ["Renault Corpo", "Renault Hq", "Renault Br"],
-        propLocation: ["France", "USA", "Italia"],
-        propExpertise: ["#Tax", "#M&A", "#Social"],
-        propDate: ["20/01/2018", "18/02/2019", "18/02/2019"],
-        propFirm: ["Racine", "Clifford chance", "SVZ"],
-        interName: ["Operation Syriusz", "Op. Prometheus", "Op.Latandre"],
-        interEntity: ["Renault Corpo", "Renault Hq", "Renault Br"],
-        interLocation: ["France", "USA", "Italia"],
-        interExpertise: ["#Tax", "#M&A", "#Social"],
-        interDate: ["20/01/2018", "18/02/2019", "18/02/2019"],
-        amountYear: [2017, 2018, 2019],
-        amountCost: ["CS 153", "CS 153", "CS 47", "CS 153", "CS 32"],
-        amountTotal: ["3500€", "9500€", "10500€", "18500€", "15500€"],
-        amountLaw: [
-            "Clifford chance",
-            "Linklaters",
-            "Linklaters",
-            "Linklaters",
-            "Linklaters",
-        ],
+        internalCorr1: "Leanne Graham",
+        propName: {
+            name1: "Operation Syriusz",
+            name2: "Op. Prometheus",
+            name3: "Op.Latandre",
+        },
+        propEntity: {
+            entity1: "Renault Corpo",
+            entity2: "Renault Hq",
+            entity3: "Renault Br",
+        },
+        propLocation: {
+            location1: "France",
+            location2: "USA",
+            location3: "Italia",
+        },
+        propExpertise: {
+            expertise1: "#Tax",
+            expertise2: "#M&A",
+            expertise3: "#Social",
+        },
+        propDate: {
+            date1: "20/01/2018",
+            date2: "18/02/2019",
+            date3: "18/02/2019",
+        },
+        propFirm: { firm1: "Racine", firm2: "Clifford chance", firm3: "SVZ" },
+        interName: {
+            name1: "Operation Syriusz",
+            name2: "Op. Prometheus",
+            name3: "Op.Latandre",
+        },
+        interEntity: {
+            entity1: "Renault Corpo",
+            entity2: "Renault Hq",
+            entity3: "Renault Br",
+        },
+        interLocation: {
+            location1: "France",
+            location2: "USA",
+            location3: "Italia",
+        },
+        interExpertise: {
+            expertise1: "#Tax",
+            expertise2: "#M&A",
+            expertise3: "#Social",
+        },
+        interDate: {
+            date1: "20/01/2018",
+            date2: "18/02/2019",
+            date3: "18/02/2019",
+        },
+        amountYear: { year1: 2017, year2: 2018, year3: 2019 },
+        amountCost: {
+            cost1: "CS 153",
+            cost2: "CS 153",
+            cost3: "CS 47",
+            cost4: "CS 153",
+            cost5: "CS 32",
+        },
+        amountTotal: {
+            total1: "3500€",
+            total2: "9500€",
+            total3: "10500€",
+            total4: "18500€",
+            total5: "15500€",
+        },
+        amountLaw: {
+            law1: "Clifford chance",
+            law2: "Linklaters",
+            law3: "Linklaters",
+            law4: "Linklaters",
+            law5: "Linklaters",
+        },
     };
     getUsers = () => {};
     passImie = (
@@ -148,6 +183,7 @@ class Profilek extends React.Component<any, any> {
         passedAttachment?: any,
         passedServices?: any,
         passedInternalCorr?: any,
+        passedInternalCorr1?: any,
         passedPropName?: any,
         passedPropEntity?: any,
         passedPropLocation?: any,
@@ -174,6 +210,7 @@ class Profilek extends React.Component<any, any> {
             attachment: passedAttachment,
             services: passedServices,
             internalCorr: passedInternalCorr,
+            internalCorr1: passedInternalCorr1,
             propName: passedPropName,
             propEntity: passedPropEntity,
             propLocation: passedPropLocation,
@@ -210,7 +247,8 @@ class Profilek extends React.Component<any, any> {
                     attachment={this.state.attachment}
                     services={this.state.services}
                     internalCorr={this.state.internalCorr}
-                    propName={this.state.interName}
+                    internalCorr1={this.state.internalCorr1}
+                    propName={this.state.propName}
                     propEntity={this.state.propEntity}
                     propLocation={this.state.propLocation}
                     propExpertise={this.state.propExpertise}
@@ -283,7 +321,8 @@ const Profile: FC<IProps> = (props: any) => {
                         attachment={props.attachment}
                         services={props.services}
                         internalCorr={props.internalCorr}
-                        propName={props.interName}
+                        internalCorr1={props.internalCorr1}
+                        propName={props.propName}
                         propEntity={props.propEntity}
                         propLocation={props.propLocation}
                         propExpertise={props.propExpertise}
@@ -312,7 +351,8 @@ const Profile: FC<IProps> = (props: any) => {
                         attachment={props.attachment}
                         services={props.services}
                         internalCorr={props.internalCorr}
-                        propName={props.interName}
+                        internalCorr1={props.internalCorr1}
+                        propName={props.propName}
                         propEntity={props.propEntity}
                         propLocation={props.propLocation}
                         propExpertise={props.propExpertise}

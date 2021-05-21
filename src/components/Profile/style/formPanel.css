@@ -1,3 +1,6 @@
+* {
+    font-family: roboto !important;
+}
 .form {
     display: flex;
     flex-direction: column;
@@ -11,4 +14,10 @@
     color: white;
     background-color: royalblue;
     font-family: roboto;
+}
+p {
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-size: 16px !important;
 }
