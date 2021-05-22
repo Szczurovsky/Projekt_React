@@ -90,13 +90,18 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { Formik } from "formik";
 import "./style/form.css";
+import { AiOutlineEdit } from "react-icons/ai";
 const MainWrapper = styled.div`
+    /* width: 70%; */
     width: 100%;
     height: 20%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 `;
 const Photo = styled.div`
-    width: 10%;
-    background-color: red;
+    padding-left: 30px;
+    width: 6%;
+    background-color: white;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -104,24 +109,30 @@ const Photo = styled.div`
     align-items: center;
 `;
 const Name = styled.div`
-    width: 40%;
-    background-color: yellow;
+    width: 60%;
+    background-color: white;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 `;
 const Contact = styled.div`
-    width: 50%;
-    background-color: violet;
+    width: 35%;
+    background-color: white;
     height: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 `;
 const PhotoComponent = styled.img`
     display: block;
     border-radius: 90%;
 `;
+const Link = styled.a``;
 const FirstSection = styled.div`
+    width: 100%;
     background-color: #fff;
     height: 100%;
     display: flex;
@@ -132,8 +143,11 @@ const SecondSection = styled.div`
     height: 500%;
     background-color: blue;
 `;
-const Link = styled.a``;
-const Info = styled.p``;
+const Info = styled.p`
+    letter-spacing: 2px;
+    margin: 1px 0;
+    font-size: 20px !important;
+`;
 class ProfileForm extends React.Component<any, any> {
     state = {
         imie: this.props.imie,
@@ -174,7 +188,7 @@ class ProfileForm extends React.Component<any, any> {
                                     <PhotoComponent src={this.state.photo} />
                                     <Link>See profile</Link>
                                 </Photo>
-                                <Name>
+                                <Name className="abuser">
                                     <form
                                         onSubmit={handleSubmit}
                                         className="form"
@@ -203,18 +217,9 @@ class ProfileForm extends React.Component<any, any> {
                                     {/* <Info>{usersList?.[9]?.name}</Info>
                 <Info>{usersList?.[9]?.name}</Info> */}
                                 </Name>
-                                <Contact>
-                                    <input
-                                        name="phone"
-                                        onChange={handleChange}
-                                        value={values.phone}
-                                    />
-                                    <input
-                                        name="email"
-                                        onChange={handleChange}
-                                        value={values.email}
-                                    />
+                                <Contact className="abuser">
                                     <button
+                                        className="buttonProfil"
                                         type="submit"
                                         onClick={() => {
                                             this.props.mode(true);
@@ -228,8 +233,18 @@ class ProfileForm extends React.Component<any, any> {
                                             );
                                         }}
                                     >
-                                        Edit
+                                        {<AiOutlineEdit />}
                                     </button>
+                                    <input
+                                        name="phone"
+                                        onChange={handleChange}
+                                        value={values.phone}
+                                    />
+                                    <input
+                                        name="email"
+                                        onChange={handleChange}
+                                        value={values.email}
+                                    />
                                 </Contact>
                             </FirstSection>
                             {/* <SecondSection>

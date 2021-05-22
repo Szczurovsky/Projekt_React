@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { Formik, Field } from "formik";
 import "./style/formPanel.css";
+import { AiOutlineEdit } from "react-icons/ai";
+import * as AllTypes from "react-icons";
 const MainWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -15,9 +17,10 @@ const Name = styled.div`
     flex-direction: column;
 `;
 const Subtitle = styled.p`
-    font-size: 16px;
+    font-size: 24px;
     color: gray;
     text-align: left;
+    margin-left: 20px;
 `;
 const Contact = styled.div`
     width: 5%;
@@ -34,8 +37,10 @@ const Link = styled.a``;
 const FirstSection = styled.div`
     width: 100%;
     background-color: #fff;
-    height: 20%;
+    /* height: 20%; */
     display: flex;
+    padding: 20px 0;
+    border-bottom: #e6e6e6 5px solid;
     justify-content: space-between;
     align-items: center;
 `;
@@ -54,6 +59,9 @@ const Panel = styled.div`
 `;
 const Info = styled.p`
     text-align: left;
+    margin: 5px 0 5px 20px;
+    /* background-color: #e6e6e6; */
+    color: royalblue;
 `;
 const ProfWrap = styled.div`
     display: flex;
@@ -62,9 +70,12 @@ const ProfWrap = styled.div`
 `;
 const Proposals = styled.div`
     width: 100%;
+    border-top: 5px #e6e6e6 solid;
     height: 30%;
     display: flex;
     flex-direction: column;
+
+    background-color: white;
 `;
 const Column = styled.div`
     display: grid;
@@ -72,16 +83,19 @@ const Column = styled.div`
     gap: 0px 0px;
 `;
 const Column1 = styled.div`
-    margin-top: 50px;
+    margin-top: 30px;
     display: grid;
+    padding-bottom: 10px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
 `;
 const Column2 = styled.div`
-    margin-top: 50px;
+    border-top: 5px #e6e6e6 solid;
+    padding-top: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
+    background-color: white;
 `;
 class PanelInfoForm extends React.Component<any, any> {
     state = {
@@ -240,7 +254,7 @@ class PanelInfoForm extends React.Component<any, any> {
                                             );
                                         }}
                                     >
-                                        Edit
+                                        {<AiOutlineEdit />}
                                     </button>
                                 </Contact>
                             </FirstSection>

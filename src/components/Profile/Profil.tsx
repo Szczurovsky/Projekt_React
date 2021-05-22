@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { IUsersReducer } from "../../reducers/usersReducer";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { IPostsReducer } from "../../reducers/postsReducer";
+import { AiOutlineEdit } from "react-icons/ai";
+import * as AllTypes from "react-icons";
+import "./style/form.css";
 interface IProps {
     mode: any;
     imie: any;
@@ -20,12 +23,16 @@ interface IProps {
 }
 
 const MainWrapper = styled.div`
+    /* width: 70%; */
     width: 100%;
     height: 20%;
+    padding-top: 10px;
+    padding-bottom: 10px;
 `;
 const Photo = styled.div`
-    width: 10%;
-    background-color: red;
+    padding-left: 30px;
+    width: 6%;
+    background-color: white;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -33,8 +40,8 @@ const Photo = styled.div`
     align-items: center;
 `;
 const Name = styled.div`
-    width: 40%;
-    background-color: yellow;
+    width: 60%;
+    background-color: white;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -42,8 +49,8 @@ const Name = styled.div`
     flex-direction: column;
 `;
 const Contact = styled.div`
-    width: 50%;
-    background-color: violet;
+    width: 35%;
+    background-color: white;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -67,7 +74,11 @@ const SecondSection = styled.div`
     height: 500%;
     background-color: blue;
 `;
-const Info = styled.p``;
+const Info = styled.p`
+    letter-spacing: 2px;
+    margin: 2px 0;
+    font-size: 20px !important;
+`;
 export const Profil: FC<IProps> = (props) => {
     const { usersList } = useSelector<IState, IUsersReducer>((globalState) => ({
         ...globalState.users,
@@ -94,7 +105,12 @@ export const Profil: FC<IProps> = (props) => {
                 </Name>
                 <Contact>
                     {" "}
-                    <button onClick={() => props.mode(false)}>Edit</button>
+                    <button
+                        className="buttonProfil"
+                        onClick={() => props.mode(false)}
+                    >
+                        {<AiOutlineEdit />}
+                    </button>
                     <Info>{props.phone}</Info>
                     <Info>{props.email}</Info>
                 </Contact>
