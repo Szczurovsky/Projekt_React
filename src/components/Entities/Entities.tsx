@@ -1,4 +1,4 @@
-import React, { FC, useState, ChangeEvent } from "react";
+import React, { FC, useState, ChangeEvent, useCallback } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import styled from "styled-components";
 import { IState } from "../../reducers";
@@ -81,67 +81,72 @@ export const Entities: FC = () => {
     }
 
     return (
-        <MainWrapper>
-            <FirstLine>
-                <Text>
-                    <Margin>Entities</Margin> <FcSettings />
-                </Text>
+        <FullScreen handle={handle}>
+            <MainWrapper>
+                <FirstLine>
+                    <Text>
+                        <Margin>Entities</Margin> <FcSettings />
+                    </Text>
+                    {mosaic ? (
+                        <SwapView onClick={() => setMosaic(false)}>
+                            <Margin>Mosaic </Margin>
+                            <ImWindows8 />
+                        </SwapView>
+                    ) : (
+                        <SwapView onClick={() => setMosaic(true)}>
+                            <Margin>Row </Margin>
+                            <AiOutlineInsertRowLeft />
+                        </SwapView>
+                    )}
+                </FirstLine>
+                <SecondLine>
+                    <Filter
+                        type="text"
+                        value={inputText}
+                        onChange={inputHandler}
+                        placeholder="wprowadz tekst"
+                    />
+                </SecondLine>
                 {mosaic ? (
-                    <SwapView onClick={() => setMosaic(false)}>
-                        <Margin>Mosaic </Margin>
-                        <ImWindows8 />
-                    </SwapView>
+                    <>
+                        {" "}
+                        <button onClick={handle.enter} />
+                        <div id="flexColumn">
+                            {data.map((photo: any) => (
+                                // <div>
+                                //     <p>{photo.id}</p>
+                                //     <img src={photo.url} />
+                                // </div>
+                                <div>
+                                    {photo.title.includes(inputText) && (
+                                        <>
+                                            {photo.id}
+                                            {photo.title}
+                                        </>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </>
                 ) : (
-                    <SwapView onClick={() => setMosaic(true)}>
-                        <Margin>Row </Margin>
-                        <AiOutlineInsertRowLeft />
-                    </SwapView>
+                    <div id="flexRow">
+                        {data.map((photo: any) => (
+                            // <div>
+                            //     <p>{photo.id}</p>
+                            //     <img src={photo.url} />
+                            // </div>
+                            <div>
+                                {photo.title.includes(inputText) && (
+                                    <>
+                                        {photo.id}
+                                        {photo.title}
+                                    </>
+                                )}
+                            </div>
+                        ))}
+                    </div>
                 )}
-            </FirstLine>
-            <SecondLine>
-                <Filter
-                    type="text"
-                    value={inputText}
-                    onChange={inputHandler}
-                    placeholder="wprowadz tekst"
-                />
-            </SecondLine>
-            {mosaic ? (
-                <div id="flexColumn">
-                    {data.map((photo: any) => (
-                        // <div>
-                        //     <p>{photo.id}</p>
-                        //     <img src={photo.url} />
-                        // </div>
-                        <div>
-                            {photo.title.includes(inputText) && (
-                                <>
-                                    {photo.id}
-                                    {photo.title}
-                                </>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ) : (
-                <div id="flexRow">
-                    {data.map((photo: any) => (
-                        // <div>
-                        //     <p>{photo.id}</p>
-                        //     <img src={photo.url} />
-                        // </div>
-                        <div>
-                            {photo.title.includes(inputText) && (
-                                <>
-                                    {photo.id}
-                                    {photo.title}
-                                </>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            )}
-            {/* <div id="a1 flex">
+                {/* <div id="a1 flex">
                 {data.map((photo: any) => (
                     // <div>
                     //     <p>{photo.id}</p>
@@ -157,7 +162,7 @@ export const Entities: FC = () => {
                     </div>
                 ))}
             </div> */}
-            {/* <div>
+                {/* <div>
                 {data.map((photo: any, x: any) => (
                     <div key={x}>
                         <p>{photo.id}</p>
@@ -165,7 +170,7 @@ export const Entities: FC = () => {
                     </div>
                 ))}
             </div> */}
-            {/* {mosaic ? (
+                {/* {mosaic ? (
                 <SwapView onClick={() => setMosaic(false)}>
                     <Margin>Mosaic </Margin>
                     <ImWindows8 />
@@ -196,6 +201,7 @@ export const Entities: FC = () => {
                     </SecondLine>
                 </>
             )} */}
-        </MainWrapper>
+            </MainWrapper>
+        </FullScreen>
     );
 };

@@ -7,4 +7,6 @@
 #flexColumn {
     display: flex;
     flex-direction: column !important;
+    background-color: #fff;
+    height: 100vh;
 }
