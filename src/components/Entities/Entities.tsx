@@ -5,9 +5,17 @@ import { IState } from "../../reducers";
 import { useSelector } from "react-redux";
 import { IUsersReducer } from "../../reducers/usersReducer";
 import { IPhotosReducer } from "../../reducers/photosReducer";
+import useDropdown from "react-dropdown-hook";
 import { FcSettings } from "react-icons/fc";
 import { ImWindows8 } from "react-icons/im";
-import { AiOutlineInsertRowLeft } from "react-icons/ai";
+import { Filterek } from "./Filter";
+import {
+    BiRadioCircleMarked,
+    BiDotsHorizontalRounded,
+    BiSort,
+    BiFilterAlt,
+} from "react-icons/bi";
+import { AiOutlineInsertRowLeft, AiFillCaretDown } from "react-icons/ai";
 import { BsArrowsFullscreen } from "react-icons/bs";
 import * as AllTypes from "react-icons";
 import "./test.css";
@@ -70,6 +78,14 @@ const Filter = styled.input`
     margin: 5% 10%;
     color: gray;
 `;
+const Static = styled.div`
+    color: gray;
+`;
+const MenuDrop = styled.button`
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+`;
 const Elem = document.getElementById("flex");
 export const Entities: FC = () => {
     const handle = useFullScreenHandle();
@@ -78,18 +94,46 @@ export const Entities: FC = () => {
             ...globalState.photos,
         })
     );
-    const [mosaic, setMosaic] = useState<boolean>(true);
-    const [inputText, setInputText] = useState<string>("");
 
+    const [mosaic, setMosaic] = useState<boolean>(false);
+    const [inputText, setInputText] = useState<string>("");
+    const [isSort, setSort] = useState<boolean>(false);
     const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value;
         setInputText(text);
     };
+
     const data: any = [];
     for (let i: any = 0; i < 30; i++) {
         data.push(photosList?.[i]);
     }
+    data.sort((a: any, b: any) => a.title.localeCompare(b.title));
+    const [filtered, setFilter] = useState(data);
+    function filtr() {
+        if (isSort == false) {
+            setSort(true);
+            return filtered.sort((a: any, b: any) =>
+                b.title.localeCompare(a.title)
+            );
+        } else {
+            setSort(false);
+            return filtered.sort((a: any, b: any) =>
+                a.title.localeCompare(b.title)
+            );
+        }
+        // filtered.sort((a: any, b: any) => b.title.localeCompare(a.title));
+        // console.log(filtered);
+    }
+    // const Sort = () => {
+    //     data.sort((a: any, b: any) => b.title.localeCompare(a.title));
 
+    // };
+    const [
+        wrapperRef,
+        dropdownOpen,
+        toggleDropdown,
+        closeDropdown,
+    ] = useDropdown();
     return (
         <FullScreen handle={handle}>
             <MainWrapper>
@@ -104,12 +148,30 @@ export const Entities: FC = () => {
                         </SwapView>
                     ) : (
                         <SwapView onClick={() => setMosaic(true)}>
-                            <Margin>Row </Margin>
+                            <Margin>Column </Margin>
                             <AiOutlineInsertRowLeft />
                         </SwapView>
                     )}
                 </FirstLine>
                 <SecondLine>
+                    <button className="circle">
+                        <BiRadioCircleMarked /> All <AiFillCaretDown />
+                    </button>
+
+                    <BiDotsHorizontalRounded />
+
+                    <Static>
+                        {" "}
+                        <button onClick={filtr}>Sort</button>
+                    </Static>
+                    <Static>
+                        <div ref={wrapperRef}>
+                            <MenuDrop onClick={toggleDropdown}>
+                                <BiFilterAlt />
+                            </MenuDrop>
+                            {dropdownOpen && <Filterek />}
+                        </div>
+                    </Static>
                     <button onClick={handle.enter} className="buttonFull">
                         <BsArrowsFullscreen />
                     </button>
@@ -125,10 +187,10 @@ export const Entities: FC = () => {
                     <>
                         {" "}
                         <div id="flexColumn">
-                            {data.map((photo: any) => (
-                                <div className="box">
+                            {filtered.map((photo: any) => (
+                                <>
                                     {photo.title.includes(inputText) && (
-                                        <>
+                                        <div className="box">
                                             <div className="photoEntities">
                                                 <img
                                                     src={photo.url}
@@ -142,18 +204,18 @@ export const Entities: FC = () => {
                                                     Capital, Venezuela
                                                 </p>
                                             </div>
-                                        </>
+                                        </div>
                                     )}
-                                </div>
+                                </>
                             ))}
                         </div>
                     </>
                 ) : (
                     <div id="flexRow">
-                        {data.map((photo: any) => (
-                            <div className="box">
+                        {filtered.map((photo: any) => (
+                            <>
                                 {photo.title.includes(inputText) && (
-                                    <>
+                                    <div className="box">
                                         <div className="photoEntities">
                                             <img
                                                 src={photo.url}
@@ -167,9 +229,9 @@ export const Entities: FC = () => {
                                                 Venezuela
                                             </p>
                                         </div>
-                                    </>
+                                    </div>
                                 )}
-                            </div>
+                            </>
                         ))}
                     </div>
                 )}

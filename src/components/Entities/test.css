@@ -1,8 +1,14 @@
-.buttonFull {
+button {
     width: auto;
     height: auto;
     border: none;
     background: none;
+}
+.circle {
+    background-color: #9ee4ff8f;
+    padding: 5px;
+    color: rgb(24, 52, 138);
+    /* margin-right: 5px; */
 }
 #flexRow {
     display: flex;
@@ -36,7 +42,8 @@
 .photoEntities {
 }
 .photoEntities img {
-    border-radius: 30%;
+    /* border-radius: 30%; */
+    margin-right: 10px;
     width: 100px;
     max-height: 10000px !important;
     height: 100px !important;
