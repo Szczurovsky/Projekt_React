@@ -8,7 +8,7 @@ import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
 import { LeftMenu } from "../LeftMenu/LeftMenu";
 import ProfileForm from "../Profile/ProfileForm";
-
+import Workspaces from "../WorkspacesComp/Workspaces";
 import { SliderComponent } from "../Workspaces/SliderComponent";
 import { TopBar } from "../TopBar/TopBar";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -160,6 +160,13 @@ export const MainPage: FC = (props) => {
                             </Route>
                             <Route path="/realEstateContracts">
                                 <RealEstateContracts />
+                            </Route>
+                            <Route
+                                exact
+                                path="/workspaces"
+                                component={Workspaces}
+                            >
+                                {/* <Workspaces /> */}
                             </Route>
                             <Route path="/corporate">Corporate</Route>
                             <Route path="/profile">
