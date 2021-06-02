@@ -78,11 +78,9 @@ export const Test: FC<ITest> = (props) => {
             <div className="info">
                 <p className="person">SUBS</p>
                 <p className="workspace">
-                    {console.log}
                     <Link to={table[props.number].link}>
                         {table[props.number].workspace}
                     </Link>
-                    {/* {props.number} */}
                 </p>
 
                 <p className="update"> Updated 3 days ago by John Doe</p>

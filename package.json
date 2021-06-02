@@ -17,11 +17,13 @@
     "@types/react-dom": "^17.0.3",
     "@types/styled-components": "^5.1.9",
     "bootstrap": "^4.6.0",
+    "copy-to-clipboard": "^3.3.1",
     "formik": "^2.2.6",
     "infinite-react-carousel": "^1.2.11",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.2",
     "react-dropdown-hook": "^1.0.1",
     "react-elastic-carousel": "^0.11.5",
@@ -69,6 +71,7 @@
   },
   "devDependencies": {
     "@types/brainhubeu__react-carousel": "^2.0.2",
+    "@types/react-copy-to-clipboard": "^5.0.0",
     "@types/react-paginate": "^7.1.0",
     "@types/react-slick": "^0.23.4"
   }

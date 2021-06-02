@@ -39,58 +39,6 @@ function Pagination2(props: any) {
     const [data, setData] = useState([]);
     const [perPage] = useState(10);
     const [pageCount, setPageCount] = useState(0);
-    const table1: IFoo = {
-        people: props.people,
-        publications: props.publications,
-        entities: props.entities,
-        administration: props.administration,
-        clientContract: props.clientContract,
-        supplierContract: props.supplierContract,
-        corporate: props.corporate,
-        groupNorms: props.groupNorms,
-        realEstateContracts: props.realEstateContracts,
-        number: props.number,
-    };
-
-    const table = [
-        { link: table1.people, workspace: "people", number: table1.number },
-        {
-            link: table1.publications,
-            workspace: "publications",
-            number: table1.number,
-        },
-        { link: table1.entities, workspace: "entities", number: table1.number },
-        {
-            link: table1.administration,
-            workspace: "administration",
-            number: table1.number,
-        },
-        {
-            link: table1.clientContract,
-            workspace: "client contract",
-            number: table1.number,
-        },
-        {
-            link: table1.supplierContract,
-            workspace: "supplier contract",
-            number: table1.number,
-        },
-        {
-            link: table1.corporate,
-            workspace: "corporate",
-            number: table1.number,
-        },
-        {
-            link: table1.groupNorms,
-            workspace: "group norms",
-            number: table1.number,
-        },
-        {
-            link: table1.realEstateContracts,
-            workspace: "real estate contract",
-            number: table1.number,
-        },
-    ];
 
     const getData = async () => {
         const res = await axios.get(
@@ -100,12 +48,13 @@ function Pagination2(props: any) {
         const slice = data
             .slice(offset, offset + perPage)
             .filter((elem: any) => {
-                // elem.postId.includes("s");
+                elem.name.includes("eaque");
                 // return elem;   c
-                console.log(elem.body.includes("1"));
+                console.log(elem.body);
                 return elem;
             });
-        // console.log(slice);
+
+        console.log(slice);
         const postData = slice.map((comment: any) => (
             <Test
                 id={comment.id}
@@ -135,6 +84,8 @@ function Pagination2(props: any) {
         getData();
     }, [offset]);
 
+    // musze w state przekazać wartosc inputa do componentu tescik i w nim filtrowac po otrzymanych propsach
+
     return (
         <>
             <Filter
@@ -145,7 +96,7 @@ function Pagination2(props: any) {
             />
             <div className="App">
                 {data}
-
+                {console.log(data[0])}
                 <ReactPaginate
                     previousLabel={"Poprzednie"}
                     nextLabel={"Następne"}

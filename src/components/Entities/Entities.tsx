@@ -8,6 +8,7 @@ import { IPhotosReducer } from "../../reducers/photosReducer";
 import useDropdown from "react-dropdown-hook";
 import { FcSettings } from "react-icons/fc";
 import { ImWindows8 } from "react-icons/im";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Filterek } from "./Filter";
 import {
     BiRadioCircleMarked,
@@ -134,6 +135,7 @@ export const Entities: FC = () => {
         toggleDropdown,
         closeDropdown,
     ] = useDropdown();
+    let url = window.location.href;
     return (
         <FullScreen handle={handle}>
             <MainWrapper>
@@ -175,6 +177,9 @@ export const Entities: FC = () => {
                     <button onClick={handle.enter} className="buttonFull">
                         <BsArrowsFullscreen />
                     </button>
+                    <CopyToClipboard text={url}>
+                        <button>Share</button>
+                    </CopyToClipboard>
                     <Filter
                         type="text"
                         value={inputText}
