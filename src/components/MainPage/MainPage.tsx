@@ -180,7 +180,7 @@ export const MainPage: FC = (props) => {
                                 <SliderContainer className="container mt-5 carousel">
                                     <SliderComponent />
                                 </SliderContainer>
-                                <Subtitles>Resume Your Work</Subtitles>
+
                                 <ResYourWork>
                                     <Pagination2
                                         publications="/publications"

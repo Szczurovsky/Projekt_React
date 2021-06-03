@@ -4,6 +4,8 @@ import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Test } from "./Test";
+import useDropdown from "react-dropdown-hook";
+import { AiOutlineInsertRowLeft, AiFillCaretDown } from "react-icons/ai";
 import "./App.css";
 interface IFoo {
     people: string;
@@ -27,6 +29,28 @@ const Filter = styled.input`
 
     margin: 5% 10%;
     color: gray;
+`;
+const RowWrapper = styled.div`
+    height: 50px;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`;
+const Followed = styled.div`
+    align-items: center;
+    padding: 0 10px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid royalblue;
+    color: royalblue;
+`;
+const Subtitles = styled.div`
+    margin: 20px 0;
+    text-align: left;
+    font-size: 18px;
+    letter-spacing: 1px;
 `;
 function Pagination2(props: any) {
     const [inputText, setInputText] = useState<string>("");
@@ -88,15 +112,22 @@ function Pagination2(props: any) {
 
     return (
         <>
-            <Filter
-                type="text"
-                value={inputText}
-                onChange={inputHandler}
-                placeholder="Wprowadź tekst"
-            />
+            <Subtitles>Resume Your Work</Subtitles>
+            <RowWrapper>
+                <Filter
+                    className="res"
+                    type="text"
+                    value={inputText}
+                    onChange={inputHandler}
+                    placeholder="Wprowadź tekst"
+                />
+                <Followed>
+                    Followed <AiFillCaretDown />
+                </Followed>
+            </RowWrapper>
             <div className="App">
                 {data}
-                {console.log(data[0])}
+
                 <ReactPaginate
                     previousLabel={"Poprzednie"}
                     nextLabel={"Następne"}

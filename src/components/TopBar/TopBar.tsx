@@ -6,8 +6,9 @@ import search from "../../icons/search.png";
 import "./TopBar.css";
 import useDropdown from "react-dropdown-hook";
 import { DropdownMenu } from "../DropdownMenu/DropdownMenu";
-import { AiOutlineArrowDown } from "react-icons/ai";
-
+import { AiOutlineArrowDown, AiFillHome } from "react-icons/ai";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
+import { IoIosNotifications } from "react-icons//io";
 const InnerWrapper = styled.div`
     width: 100%;
     height: 60px;
@@ -48,7 +49,35 @@ const MenuDrop = styled.button`
     cursor: pointer;
     border: none;
 `;
-
+const Number = styled.div`
+    top: -3px;
+    right: -5px;
+    padding: 2px;
+    background-color: royalblue;
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+`;
+const WrapIcons = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+const WrapIcon = styled.div`
+    position: relative;
+    background-color: #a7a7a7;
+    margin: 0 20px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 90%;
+`;
+const WrapIconH = styled.div`
+    margin: 0 20px;
+    padding: 10px;
+    font-size: 20px;
+    position: relative;
+`;
 export const TopBar: FC = () => {
     const [
         wrapperRef,
@@ -81,6 +110,20 @@ export const TopBar: FC = () => {
                     <img src={search} alt="" className="search" />
                 </a>
             </div>
+            <WrapIcons>
+                <WrapIconH>
+                    <AiFillHome />
+                    {/* <Number>5</Number> */}
+                </WrapIconH>
+                <WrapIcon>
+                    <HiOutlineChatAlt2 />
+                    <Number>4</Number>
+                </WrapIcon>
+                <WrapIcon>
+                    <IoIosNotifications />
+                    <Number>2</Number>
+                </WrapIcon>
+            </WrapIcons>
         </InnerWrapper>
     );
 };

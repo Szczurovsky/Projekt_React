@@ -68,3 +68,6 @@
 .pagination > li:last-child > span {
     border-radius: unset;
 }
+.res {
+    width: 30% !important;
+}

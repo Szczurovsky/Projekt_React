@@ -26,6 +26,19 @@ button {
     width: 100%;
     align-items: center;
 }
+.boxColumn {
+    display: flex;
+    padding: 10px;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center;
+    margin: 20px 10px;
+    width: 100%;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000,
+        -8px -2px 24px 9px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 13px -7px #000000,
+        -8px -2px 24px 9px rgba(0, 0, 0, 0.2);
+}
 .box {
     display: flex;
     padding: 10px;
@@ -49,7 +62,7 @@ button {
     height: 100px !important;
 }
 .titleEntities {
-    width: 70%;
+    /* width: 70%; */
     text-transform: capitalize;
     display: flex;
     flex-direction: column !important;
@@ -61,4 +74,10 @@ button {
 }
 .margin {
     margin-left: 10px;
+}
+.filtruj {
+    padding: 0 10px;
+    margin: 0 100px;
+    border: solid 3px rgba(199, 199, 199, 0.822);
+    width: 200px !important;
 }

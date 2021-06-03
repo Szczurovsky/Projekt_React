@@ -87,6 +87,25 @@ const MenuDrop = styled.button`
     cursor: pointer;
     border: none;
 `;
+const Followed = styled.div`
+    border: 1px solid royalblue;
+    color: royalblue;
+    padding: 10px;
+`;
+const WrapElem = styled.div`
+    width: auto;
+
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+`;
+const WrapElems = styled.div`
+    width: auto;
+
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+`;
 const Elem = document.getElementById("flex");
 export const Entities: FC = () => {
     const handle = useFullScreenHandle();
@@ -156,36 +175,44 @@ export const Entities: FC = () => {
                     )}
                 </FirstLine>
                 <SecondLine>
-                    <button className="circle">
-                        <BiRadioCircleMarked /> All <AiFillCaretDown />
-                    </button>
+                    <WrapElem>
+                        <button className="circle">
+                            <BiRadioCircleMarked /> All <AiFillCaretDown />
+                        </button>
 
-                    <BiDotsHorizontalRounded />
+                        <BiDotsHorizontalRounded />
 
-                    <Static>
-                        {" "}
-                        <button onClick={filtr}>Sort</button>
-                    </Static>
-                    <Static>
-                        <div ref={wrapperRef}>
-                            <MenuDrop onClick={toggleDropdown}>
-                                <BiFilterAlt />
-                            </MenuDrop>
-                            {dropdownOpen && <Filterek />}
-                        </div>
-                    </Static>
-                    <button onClick={handle.enter} className="buttonFull">
-                        <BsArrowsFullscreen />
-                    </button>
-                    <CopyToClipboard text={url}>
-                        <button>Share</button>
-                    </CopyToClipboard>
-                    <Filter
-                        type="text"
-                        value={inputText}
-                        onChange={inputHandler}
-                        placeholder="wprowadz tekst"
-                    />
+                        <Static>
+                            {" "}
+                            <button onClick={filtr}>Sort</button>
+                        </Static>
+                        <Static>
+                            <div ref={wrapperRef}>
+                                <MenuDrop onClick={toggleDropdown}>
+                                    <BiFilterAlt />
+                                </MenuDrop>
+                                {dropdownOpen && <Filterek />}
+                            </div>
+                        </Static>
+                        <button onClick={handle.enter} className="buttonFull">
+                            <BsArrowsFullscreen />
+                        </button>
+                        <CopyToClipboard text={url}>
+                            <button>Share</button>
+                        </CopyToClipboard>
+                    </WrapElem>
+                    <WrapElems>
+                        <Filter
+                            className="filtruj"
+                            type="text"
+                            value={inputText}
+                            onChange={inputHandler}
+                            placeholder="wprowadz tekst"
+                        />
+                        <Followed>
+                            Followed <AiFillCaretDown />
+                        </Followed>
+                    </WrapElems>
                 </SecondLine>
 
                 {mosaic ? (
@@ -195,7 +222,7 @@ export const Entities: FC = () => {
                             {filtered.map((photo: any) => (
                                 <>
                                     {photo.title.includes(inputText) && (
-                                        <div className="box">
+                                        <div className="boxColumn">
                                             <div className="photoEntities">
                                                 <img
                                                     src={photo.url}
@@ -244,59 +271,3 @@ export const Entities: FC = () => {
         </FullScreen>
     );
 };
-
-//  {/* <div id="a1 flex">
-//                 {data.map((photo: any) => (
-//                     // <div>
-//                     //     <p>{photo.id}</p>
-//                     //     <img src={photo.url} />
-//                     // </div>
-//                     <div>
-//                         {photo.title.includes(inputText) && (
-//                             <>
-//                                 {photo.id}
-//                                 {photo.title}
-//                             </>
-//                         )}
-//                     </div>
-//                 ))}
-//             </div> */}
-//                 {/* <div>
-//                 {data.map((photo: any, x: any) => (
-//                     <div key={x}>
-//                         <p>{photo.id}</p>
-//                         <p>{photo.url}</p>
-//                     </div>
-//                 ))}
-//             </div> */}
-//                 {/* {mosaic ? (
-//                 <SwapView onClick={() => setMosaic(false)}>
-//                     <Margin>Mosaic </Margin>
-//                     <ImWindows8 />
-//                 </SwapView>
-//             ) : (
-//                 <>
-//                     <SwapView onClick={() => setMosaic(true)}>
-//                         <Margin>Row </Margin>
-//                         <AiOutlineInsertRowLeft />
-//                     </SwapView>
-//                     <SecondLine>
-//                         <div id="a1 flex">
-//                             {data.map((photo: any) => (
-//                                 // <div>
-//                                 //     <p>{photo.id}</p>
-//                                 //     <img src={photo.url} />
-//                                 // </div>
-//                                 <div>
-//                                     {photo.title.includes(inputText) && (
-//                                         <>
-//                                             {photo.id}
-//                                             {photo.title}
-//                                         </>
-//                                     )}
-//                                 </div>
-//                             ))}
-//                         </div>
-//                     </SecondLine>
-//                 </>
-//             )} */}
