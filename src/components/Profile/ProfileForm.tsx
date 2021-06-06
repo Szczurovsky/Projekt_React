@@ -91,6 +91,7 @@ import styled from "styled-components";
 import { Formik } from "formik";
 import "./style/form.css";
 import { AiOutlineEdit } from "react-icons/ai";
+
 const MainWrapper = styled.div`
     /* width: 70%; */
     width: 100%;
@@ -134,6 +135,7 @@ const Link = styled.a``;
 const FirstSection = styled.div`
     width: 100%;
     background-color: #fff;
+    padding: 50px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -145,7 +147,7 @@ const SecondSection = styled.div`
 `;
 const Info = styled.p`
     letter-spacing: 2px;
-    margin: 1px 0;
+    margin: 2px 0;
     font-size: 20px !important;
 `;
 class ProfileForm extends React.Component<any, any> {
@@ -157,15 +159,8 @@ class ProfileForm extends React.Component<any, any> {
         username: this.props.username,
         phone: this.props.phone,
         email: this.props.email,
-        // expertise: this.props.expertise,
-        // specialities: this.props.specialities,
-        // admission: this.props.admission,
-        // counties: this.props.counties,
     };
-    //funkcja setsTate miala problem dlatego przejscie na funkcje strzałkowa
-    // handleChange = (target: any) => {
-    //     this.setState({ [target.name]: target.value });
-    // };
+
     render() {
         return (
             <>
@@ -247,84 +242,11 @@ class ProfileForm extends React.Component<any, any> {
                                     />
                                 </Contact>
                             </FirstSection>
-                            {/* <SecondSection>
-                                ssss
-                                <button
-                                    type="submit"
-                                    onClick={() => {
-                                        this.props.mode(true);
-                                        this.props.passOther(
-                                            values.expertise,
-                                            values.specialities,
-                                            values.address,
-                                            values.username
-                                        );
-                                    }}
-                                >
-                                    Edit
-                                </button>
-                            </SecondSection> */}
                         </MainWrapper>
-                        // <form onSubmit={handleSubmit}>
-                        //     <input
-                        //         name="imie"
-                        //         onChange={handleChange}
-                        //         value={values.imie}
-                        //     />
-                        // <button
-                        //     type="submit"
-                        //     onClick={() => {
-                        //         this.props.mode(true);
-                        //         this.props.passImie(values.imie);
-                        //     }}
-                        // >
-                        //     Edit
-                        // </button>
-                        // </form>
                     )}
                 />
-                {/* <button
-                    onClick={() => {
-                        this.props.mode(true);
-                        this.props.passImie("Izabela");
-                    }}
-                >
-                    Edit
-                </button> */}
             </>
         );
     }
 }
 export default ProfileForm;
-// import React, { FC } from "react";
-// import styled from "styled-components";
-
-// class ProfileForm extends React.Component<any, any> {
-//     state = {
-//         imie: this.props.imie,
-//     };
-//
-//     handleChange = (target: any) => {
-//         this.setState({ imie: target.value });
-//         console.log(target);
-//     };
-//     render() {
-//         return (
-//             <>
-//                 {console.log(this.state.imie)}
-//                 <p>{this.state.imie}</p>
-//                 <input type="text" name="imie" onChange={this.handleChange} />
-//                 <button
-//                     onClick={() => {
-//                         console.log(this.state.imie);
-//                         this.props.mode(true);
-//                         this.props.passImie(this.state.imie);
-//                     }}
-//                 >
-//                     Edit
-//                 </button>
-//             </>
-//         );
-//     }
-// }
-// export default ProfileForm;

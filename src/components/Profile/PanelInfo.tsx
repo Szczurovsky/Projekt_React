@@ -86,19 +86,22 @@ const SecondSection = styled.div`
 const Panel = styled.div`
     width: 100%;
     height: 100%;
+    padding: 20px;
     display: flex;
+
     justify-content: flex-start;
     flex-direction: column;
 `;
 const Info = styled.p`
     text-align: left;
-    margin: 5px 0 5px 20px;
+    margin: 5px 0 10px 20px;
     /* background-color: #e6e6e6; */
     color: royalblue;
 `;
 const ProfWrap = styled.div`
     display: flex;
     flex-direction: row;
+    margin-left: 20px;
     align-items: center;
 `;
 const Proposals = styled.div`
@@ -107,7 +110,7 @@ const Proposals = styled.div`
     height: 30%;
     display: flex;
     flex-direction: column;
-
+    padding: 20px 0;
     background-color: white;
 `;
 const Column = styled.div`
@@ -124,7 +127,7 @@ const Column1 = styled.div`
 `;
 const Column2 = styled.div`
     border-top: 5px #e6e6e6 solid;
-    padding-top: 10px;
+    padding: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
@@ -189,12 +192,12 @@ export const PanelInfo: FC<IProps> = (props) => {
             <Proposals>
                 <Info>Proposals</Info>
                 <Column>
-                    <p>Name</p>
-                    <p>Entity</p>
-                    <p>Location</p>
-                    <p>Expertise</p>
-                    <p>Date</p>
-                    <p>Firm</p>
+                    <p className="borderProp">Name</p>
+                    <p className="borderProp">Entity</p>
+                    <p className="borderProp">Location</p>
+                    <p className="borderProp">Expertise</p>
+                    <p className="borderProp">Date</p>
+                    <p className="borderProp">Firm</p>
 
                     <p>{props.propName.name1}</p>
                     <p>{props.propEntity.entity1}</p>
@@ -216,11 +219,11 @@ export const PanelInfo: FC<IProps> = (props) => {
                     <p>{props.propFirm.firm3}</p>
                 </Column>
                 <Column1>
-                    <p>Name</p>
-                    <p>Entity</p>
-                    <p>Location</p>
-                    <p>Expertise</p>
-                    <p>Date</p>
+                    <p className="borderProp">Name</p>
+                    <p className="borderProp">Entity</p>
+                    <p className="borderProp">Location</p>
+                    <p className="borderProp">Expertise</p>
+                    <p className="borderProp">Date</p>
                     <p>{props.interName.name1}</p>
                     <p>{props.interEntity.entity1}</p>
                     <p>{props.interLocation.location1}</p>
@@ -238,10 +241,10 @@ export const PanelInfo: FC<IProps> = (props) => {
                     <p>{props.interDate.date3}</p>
                 </Column1>
                 <Column2>
-                    <p>Year</p>
-                    <p>Cost center</p>
-                    <p>Total amount</p>
-                    <p>Law firm</p>
+                    <p className="borderProp">Year</p>
+                    <p className="borderProp">Cost center</p>
+                    <p className="borderProp">Total amount</p>
+                    <p className="borderProp">Law firm</p>
                     <div className="name">
                         <p>{props.amountYear.year1}</p>
                         <p>{props.amountYear.year2}</p>

@@ -69,33 +69,53 @@ function Pagination2(props: any) {
             `https://jsonplaceholder.typicode.com/comments`
         );
         const data = res.data;
-        const slice = data
-            .slice(offset, offset + perPage)
-            .filter((elem: any) => {
-                elem.name.includes("eaque");
-                // return elem;   c
-                console.log(elem.body);
-                return elem;
-            });
+
+        const slice = data.slice(offset, offset + perPage);
+        // .filter((elem: any) => {
+        //     elem.name.includes("eaque");
+        //     // return elem;   c
+        //     console.log(elem.body);
+        //     return elem;
+        // });
 
         console.log(slice);
         const postData = slice.map((comment: any) => (
-            <Test
-                id={comment.id}
-                comment={comment}
-                number={Math.floor(Math.random() * 9)}
-                publications="/publications"
-                people="/people"
-                entities="/entities"
-                administration="/administration"
-                clientContract="/clientContract"
-                supplierContract="/supplierContract"
-                corporate="/corporate"
-                groupNorms="/groupNorms"
-                realEstateContracts="/realEstateContracts"
-            />
+            <>
+                {comment.name.includes(inputText) && (
+                    <Test
+                        id={comment.id}
+                        comment={comment}
+                        number={Math.floor(Math.random() * 9)}
+                        publications="/publications"
+                        people="/people"
+                        entities="/entities"
+                        administration="/administration"
+                        clientContract="/clientContract"
+                        supplierContract="/supplierContract"
+                        corporate="/corporate"
+                        groupNorms="/groupNorms"
+                        realEstateContracts="/realEstateContracts"
+                    />
+                )}
+            </>
         ));
-
+        /* {filtered.map((photo: any) => (
+                    <>
+                        {photo.title.includes(inputText) && (
+                            <div className="box">
+                                <div className="photoEntities"></div>
+                                <div className="titleEntities">
+                                    {photo.title}
+                                    <p className="textEntities">
+                                        Caracas 1050, Distrito Capital,
+                                        Venezuela
+                                    </p>
+                                </div>
+                            </div>
+                        )}
+                    </>
+                ))} */
+        console.log(postData);
         setData(postData);
         setPageCount(Math.ceil(data.length / perPage));
     };
@@ -103,8 +123,9 @@ function Pagination2(props: any) {
         const selectedPage = e.selected;
         setOffset(selectedPage + 1);
     };
-
+    const [filtered, setFilter] = useState([]);
     useEffect(() => {
+        setFilter(data);
         getData();
     }, [offset]);
 
@@ -125,9 +146,47 @@ function Pagination2(props: any) {
                     Followed <AiFillCaretDown />
                 </Followed>
             </RowWrapper>
+            {/* {data} */}
+            {data.map((photo: any, index: any, props) => (
+                <>
+                    {/* {photo.title.includes(inputText) && (
+                            <div className="box">
+                                <div className="photoEntities"></div>
+                                <div className="titleEntities">
+                                    {photo.title}
+                                    <p className="textEntities">
+                                        Caracas 1050, Distrito Capital,
+                                        Venezuela
+                                    </p>
+                                </div>
+                            </div>
+                        )} */}
+                    {
+                        photo.props.children.props.comment.name.includes(
+                            inputText
+                        ) && (
+                            <Test
+                                id={photo.props.children.props.comment.id}
+                                comment={photo.props.children.props.comment}
+                                number={Math.floor(Math.random() * 9)}
+                                publications="/publications"
+                                people="/people"
+                                entities="/entities"
+                                administration="/administration"
+                                clientContract="/clientContract"
+                                supplierContract="/supplierContract"
+                                corporate="/corporate"
+                                groupNorms="/groupNorms"
+                                realEstateContracts="/realEstateContracts"
+                            />
+                        )
+                        // {console.log(photo.props.children.props.comment.name)}
+                    }
+                </>
+            ))}
+            {/* {console.log(data?.[0]?.props.children.props.comment.body)} */}
             <div className="App">
-                {data}
-
+                {console.log(filtered)}
                 <ReactPaginate
                     previousLabel={"Poprzednie"}
                     nextLabel={"Następne"}

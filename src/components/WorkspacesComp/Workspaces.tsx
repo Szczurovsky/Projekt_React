@@ -12,6 +12,7 @@ import { GiKing } from "react-icons/gi";
 import Pagination2 from "../Pagination/Pagination2";
 import { CgOrganisation } from "react-icons/cg";
 import { SiGnuprivacyguard } from "react-icons/si";
+import { StartWorking } from "./StartWorking";
 import styled from "styled-components";
 interface IStat {
     icon: any;
@@ -92,6 +93,7 @@ const Workspaces: FC<IStat> = (props: any) => {
                     </TextInside>
                 </TextWrapper>
             </WorkspaceWrapper>
+            <StartWorking />
             <Pagination2
                 publications="/publications"
                 people="/people"

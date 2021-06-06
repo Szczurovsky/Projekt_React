@@ -88,6 +88,10 @@ const MenuDrop = styled.button`
     border: none;
 `;
 const Followed = styled.div`
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid royalblue;
     color: royalblue;
     padding: 10px;
@@ -101,7 +105,7 @@ const WrapElem = styled.div`
 `;
 const WrapElems = styled.div`
     width: auto;
-
+    align-items: center;
     display: flex;
     width: 50%;
     justify-content: flex-end;

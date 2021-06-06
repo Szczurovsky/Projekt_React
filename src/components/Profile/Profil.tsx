@@ -65,6 +65,7 @@ const Link = styled.a``;
 const FirstSection = styled.div`
     width: 100%;
     background-color: #fff;
+    padding: 50px;
     height: 100%;
     display: flex;
     justify-content: center;
