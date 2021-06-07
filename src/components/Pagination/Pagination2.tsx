@@ -37,7 +37,7 @@ const RowWrapper = styled.div`
     flex-direction: row;
     align-items: center;
 `;
-const Followed = styled.div`
+const Followed = styled.button`
     align-items: center;
     padding: 0 10px;
     height: 30px;
@@ -53,17 +53,41 @@ const Subtitles = styled.div`
     letter-spacing: 1px;
 `;
 function Pagination2(props: any) {
+    enum Users {
+        "Leanne Graham" = 1,
+        "Ervin Howell",
+        "Clementine Bauch",
+        "Patricia Lebsack",
+        "Chelsey Dietrich",
+        "Mrs. Dennis Schulist",
+        "Kurtis Weissnat",
+        "icholas Runolfsdottir V",
+        "Glenna Reichert",
+        "Clementina DuBuque",
+    }
     const [inputText, setInputText] = useState<string>("");
 
     const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         const text = e.target.value;
         setInputText(text);
     };
+    console.log(Users["Leanne Graham"]);
     const [offset, setOffset] = useState(0);
     const [data, setData] = useState([]);
     const [perPage] = useState(10);
     const [pageCount, setPageCount] = useState(0);
-
+    let Names = [
+        "Leanne Graham",
+        "Ervin Howell",
+        "Clementine Bauch",
+        "Patricia Lebsack",
+        "Chelsey Dietrich",
+        "Mrs. Dennis Schulist",
+        "Kurtis Weissnat",
+        "icholas Runolfsdottir V",
+        "Glenna Reichert",
+        "Clementina DuBuque",
+    ];
     const getData = async () => {
         const res = await axios.get(
             `https://jsonplaceholder.typicode.com/comments`
@@ -79,26 +103,27 @@ function Pagination2(props: any) {
         // });
 
         console.log(slice);
-        const postData = slice.map((comment: any) => (
-            <>
-                {comment.name.includes(inputText) && (
-                    <Test
-                        id={comment.id}
-                        comment={comment}
-                        number={Math.floor(Math.random() * 9)}
-                        publications="/publications"
-                        people="/people"
-                        entities="/entities"
-                        administration="/administration"
-                        clientContract="/clientContract"
-                        supplierContract="/supplierContract"
-                        corporate="/corporate"
-                        groupNorms="/groupNorms"
-                        realEstateContracts="/realEstateContracts"
-                    />
-                )}
-            </>
-        ));
+        // const postData = slice.map((comment: any) => (
+        //     <>
+        //         {comment.name.includes(inputText) && (
+        //             <Test
+        //                 id={comment.id}
+        //                 imie={Names}
+        //                 comment={comment}
+        //                 number={Math.floor(Math.random() * 9)}
+        //                 publications="/publications"
+        //                 people="/people"
+        //                 entities="/entities"
+        //                 administration="/administration"
+        //                 clientContract="/clientContract"
+        //                 supplierContract="/supplierContract"
+        //                 corporate="/corporate"
+        //                 groupNorms="/groupNorms"
+        //                 realEstateContracts="/realEstateContracts"
+        //             />
+        //         )}
+        //     </>
+        // ));
         /* {filtered.map((photo: any) => (
                     <>
                         {photo.title.includes(inputText) && (
@@ -115,8 +140,8 @@ function Pagination2(props: any) {
                         )}
                     </>
                 ))} */
-        console.log(postData);
-        setData(postData);
+        console.log(slice);
+        setData(slice);
         setPageCount(Math.ceil(data.length / perPage));
     };
     const handlePageClick = (e: any) => {
@@ -142,13 +167,28 @@ function Pagination2(props: any) {
                     onChange={inputHandler}
                     placeholder="Wprowadź tekst"
                 />
-                <Followed>
+                <Followed
+                    onClick={() => {
+                        data.filter((test: any, props) => {
+                            // console.log(
+
+                            // )
+                            if (
+                                test.props.children.props.comment.id ===
+                                Users["Leanne Graham"]
+                            ) {
+                                return console.log("sss");
+                            }
+                        });
+                    }}
+                >
                     Followed <AiFillCaretDown />
                 </Followed>
             </RowWrapper>
             {/* {data} */}
             {data.map((photo: any, index: any, props) => (
                 <>
+                    {console.log(photo.email)}
                     {/* {photo.title.includes(inputText) && (
                             <div className="box">
                                 <div className="photoEntities"></div>
@@ -162,12 +202,13 @@ function Pagination2(props: any) {
                             </div>
                         )} */}
                     {
-                        photo.props.children.props.comment.name.includes(
-                            inputText
-                        ) && (
+                        photo.name.includes(inputText) && (
                             <Test
-                                id={photo.props.children.props.comment.id}
-                                comment={photo.props.children.props.comment}
+                                id={photo.id}
+                                comment={photo.comment}
+                                name={photo.name}
+                                body={photo.body}
+                                imie={Names}
                                 number={Math.floor(Math.random() * 9)}
                                 publications="/publications"
                                 people="/people"

@@ -6,6 +6,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 interface ITest {
     id: number;
+    imie?: any;
+    name: any;
+    body: any;
     comment?: any;
     number: number;
     people: string;
@@ -73,8 +76,8 @@ export const Test: FC<ITest> = (props) => {
     ];
     return (
         <div key={props.id} className="tescik">
-            <p className="name">{props.comment.name}</p>
-            <p className="body">{props.comment.body}</p>
+            <p className="name">{props.name}</p>
+            <p className="body">{props.body}</p>
             <div className="info">
                 <p className="person">SUBS</p>
                 <p className="workspace">
@@ -83,7 +86,10 @@ export const Test: FC<ITest> = (props) => {
                     </Link>
                 </p>
 
-                <p className="update"> Updated 3 days ago by John Doe</p>
+                <p className="update">
+                    {" "}
+                    Updated 3 days ago by {props.imie[props.number]}
+                </p>
             </div>
         </div>
     );
