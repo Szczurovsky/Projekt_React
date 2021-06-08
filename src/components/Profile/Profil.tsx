@@ -10,12 +10,12 @@ import * as AllTypes from "react-icons";
 import "./style/form.css";
 interface IProps {
     mode: any;
-    imie: any;
-    company?: any;
-    address?: any;
-    username?: any;
+    imie: string;
+    company?: string;
+    address?: string;
+    username?: string;
     phone?: number;
-    email?: any;
+    email?: string;
     // expertise?: any;
     // specialities?: any;
     // admission?: any;

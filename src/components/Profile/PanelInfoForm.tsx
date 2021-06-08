@@ -4,6 +4,7 @@ import { Formik, Field } from "formik";
 import "./style/formPanel.css";
 import { AiOutlineEdit } from "react-icons/ai";
 import * as AllTypes from "react-icons";
+import TextField from "@material-ui/core/TextField";
 const MainWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -456,12 +457,24 @@ class PanelInfoForm extends React.Component<any, any> {
 
                                     {/* data */}
                                     <p>
-                                        <input
+                                        {/* <input
+                                            name="propDate.date1"
+                                            onChange={handleChange}
+                                            value={values.propDate.date1}
+                                        /> */}
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="propDate.date1"
                                             onChange={handleChange}
                                             value={values.propDate.date1}
                                         />
                                     </p>
+
                                     <p>
                                         <input
                                             name="propFirm.firm1"
@@ -502,7 +515,13 @@ class PanelInfoForm extends React.Component<any, any> {
                                         />
                                     </p>
                                     <p>
-                                        <input
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="propDate.date2"
                                             onChange={handleChange}
                                             value={values.propDate.date2}
@@ -548,7 +567,13 @@ class PanelInfoForm extends React.Component<any, any> {
                                         />
                                     </p>
                                     <p>
-                                        <input
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="propDate.date3"
                                             onChange={handleChange}
                                             value={values.propDate.date3}
@@ -601,7 +626,18 @@ class PanelInfoForm extends React.Component<any, any> {
                                         />
                                     </p>
                                     <p>
-                                        <input
+                                        {/* <input
+                                            name="interDate.date1"
+                                            onChange={handleChange}
+                                            value={values.interDate.date1}
+                                        /> */}
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="interDate.date1"
                                             onChange={handleChange}
                                             value={values.interDate.date1}
@@ -640,7 +676,13 @@ class PanelInfoForm extends React.Component<any, any> {
                                         />
                                     </p>
                                     <p>
-                                        <input
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="interDate.date2"
                                             onChange={handleChange}
                                             value={values.interDate.date2}
@@ -679,7 +721,13 @@ class PanelInfoForm extends React.Component<any, any> {
                                         />
                                     </p>
                                     <p>
-                                        <input
+                                        <TextField
+                                            id="date"
+                                            type="date"
+                                            defaultValue="2017-05-24"
+                                            // InputLabelProps={{
+                                            //     shrink: true,
+                                            // }}
                                             name="interDate.date3"
                                             onChange={handleChange}
                                             value={values.interDate.date3}

@@ -186,7 +186,7 @@ function Pagination2(props: any) {
                 </Followed>
             </RowWrapper>
             {/* {data} */}
-            {data.map((photo: any, index: any, props) => (
+            {data.map((photo: any, index: number, props) => (
                 <>
                     {console.log(photo.email)}
                     {/* {photo.title.includes(inputText) && (

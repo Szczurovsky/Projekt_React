@@ -127,7 +127,7 @@ export const Entities: FC = () => {
         setInputText(text);
     };
 
-    const data: any = [];
+    const data: object[] = [];
     for (let i: any = 0; i < 30; i++) {
         data.push(photosList?.[i]);
     }

@@ -7,9 +7,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 interface ITest {
     id: number;
     imie?: any;
-    name: any;
-    body: any;
-    comment?: any;
+    name: string;
+    body: string;
+    comment?: string;
     number: number;
     people: string;
     publications: string;

@@ -102,9 +102,9 @@ class Profilek extends React.Component<any, any> {
             expertise3: "#Social",
         },
         propDate: {
-            date1: "20/01/2018",
-            date2: "18/02/2019",
-            date3: "18/02/2019",
+            date1: "2017-05-24",
+            date2: "2017-05-24",
+            date3: "2017-05-24",
         },
         propFirm: { firm1: "Racine", firm2: "Clifford chance", firm3: "SVZ" },
         interName: {
@@ -128,9 +128,9 @@ class Profilek extends React.Component<any, any> {
             expertise3: "#Social",
         },
         interDate: {
-            date1: "20/01/2018",
-            date2: "18/02/2019",
-            date3: "18/02/2019",
+            date1: "2017-05-24",
+            date2: "2017-05-24",
+            date3: "2017-05-24",
         },
         amountYear: { year1: 2017, year2: 2018, year3: 2019 },
         amountCost: {
