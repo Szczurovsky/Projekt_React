@@ -8,6 +8,7 @@ import { getPhotos } from "../../actions/photoActions";
 import styled from "styled-components";
 import { LeftMenu } from "../LeftMenu/LeftMenu";
 import ProfileForm from "../Profile/ProfileForm";
+import { Something } from "../SomethingComp/Something";
 import Workspaces from "../WorkspacesComp/Workspaces";
 import { SliderComponent } from "../Workspaces/SliderComponent";
 import { TopBar } from "../TopBar/TopBar";
@@ -171,6 +172,9 @@ export const MainPage: FC = (props) => {
                             <Route path="/corporate">Corporate</Route>
                             <Route path="/profile">
                                 <Profilek />
+                            </Route>
+                            <Route path="/network">
+                                <Something />
                             </Route>
                             <Route path="/profileForm"></Route>
                             <Route path="/">

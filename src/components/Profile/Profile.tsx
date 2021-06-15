@@ -65,12 +65,12 @@ interface IProps {
 }
 class Profilek extends React.Component<any, any> {
     state = {
-        imie: "Humberta Swift",
+        imie: "Ervin Howell",
         company: "Clifford Chance",
         address: "New York",
         username: "Partner",
         phone: "+33 (0)6 12 34 56 78",
-        email: "humbertaswift@gmail.com",
+        email: "ervinhowell@gmail.com",
         expertise: "Mergers and acquisition",
         specialities: "Cross border operation",
         admission: "Paris bar Association",
